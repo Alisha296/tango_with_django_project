@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 def home(request):
   products = Products.object.all()
-  return render(request, 'store/store.html', {'products': products})
+  return render(request, 'store/home.html', {'products': products})
 
 #Create User Authentication
 def register(request):
