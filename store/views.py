@@ -4,4 +4,4 @@ from .models import Product
 # Create your views here.
 def home(request):
   products = Products.object.all()
-  return render(request,'home.html',{'products':products})
+  return HttpResponse("<h1>Welcome to the Store!</h1>")
