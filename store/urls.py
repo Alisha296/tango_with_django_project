@@ -1,11 +1,10 @@
 from django.urls import path
-<<<<<<< HEAD
 from . import views
+from .views import log_request_details
 
 urlpatterns = [
     path("", views.home, name="home"),
-=======
-from . import views  # Import the views module
+
 
 urlpatterns = [
     # URL pattern for adding a product
@@ -61,6 +60,10 @@ urlpatterns = [
     
     # URL pattern for viewing the details of an order
     path('order_detail/<int:order_id>/', views.order_detail, name='order_detail'),
+
+    urlpatterns = [
+    path('log-request/', log_request_details, name='log_request_details'),
+]
     
     # URL pattern for deleting an order
     path('order_delete/<int:order_id>/', views.order_delete, name='order_delete'),
