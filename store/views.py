@@ -1,7 +1,8 @@
-<<<<<<< HEAD
+
 # Create your views here.
 
 from django.http import HttpResponse
+from django.http import JsonResponse
 
 def home(request):
     return HttpResponse("<h1>Welcome to the Store!</h1>")
@@ -516,4 +517,14 @@ def edit_product_sizencolor(request):
 
     response_data = {'list': data}
     return JsonResponse(response_data, safe=False)
->>>>>>> 97121af5c065cc5353dd3fa07693a8054813088e
+
+def log_request_details(request):
+    request_info = {
+        'request_address': request.build_absolute_uri(),  # Full URL
+        'request_type': request.method,  # GET, POST, etc.
+        'request_parameters': request.GET if request.method == 'GET' else request.POST,  # Params
+    }
+    
+    print(request_info)  # Log to console (for debugging)
+
+    return JsonResponse({'message': 'Request received', 'data': request_info})
