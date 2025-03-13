@@ -100,7 +100,7 @@ MIDDLEWARE = [
     # 'allauth.account.middleware.AccountMiddleware',
 ]
 
-ROOT_URLCONF = 'ecom_philos.urls'
+ROOT_URLCONF = 'tango_with_django_project'
 
 TEMPLATES = [
     {
@@ -120,7 +120,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ecom_philos.wsgi.application'
+WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
 
 # Database
@@ -195,6 +195,7 @@ USE_TZ = True
 #     BASE_DIR / "static",
 # ]
 
+"""
 STATIC_URL = '/static/'
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
@@ -203,7 +204,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
+"""
 
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
