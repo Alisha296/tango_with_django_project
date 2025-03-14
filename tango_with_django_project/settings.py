@@ -140,13 +140,14 @@ WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': database_name,
+        'NAME': 'tfa_db',  # Replace with your database name
         'USER': 'default',
         'PASSWORD': database_password,
         'HOST': 'ep-weathered-morning-a4e9uxbk-pooler.us-east-1.aws.neon.tech',
         # 'PORT': '41567',
     }
 }
+
 
 
 
