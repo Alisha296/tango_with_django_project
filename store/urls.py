@@ -3,10 +3,9 @@ from . import views
 from .views import log_request_details
 
 urlpatterns = [
+    # URL pattern for the home page
     path("", views.home, name="home"),
 
-
-urlpatterns = [
     # URL pattern for adding a product
     path('add_product/', views.add_product, name='add_product'),
     
@@ -61,9 +60,8 @@ urlpatterns = [
     # URL pattern for viewing the details of an order
     path('order_detail/<int:order_id>/', views.order_detail, name='order_detail'),
 
-    urlpatterns = [
+    # URL pattern for logging request details
     path('log-request/', log_request_details, name='log_request_details'),
-]
     
     # URL pattern for deleting an order
     path('order_delete/<int:order_id>/', views.order_delete, name='order_delete'),
