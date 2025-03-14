@@ -29,13 +29,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import store
+from django.contrib import admin
 from django.urls import path, include
-=======
+
 from django.urls import path
 # from .views import *
-from app.views import *
-from admin_app.views import *
+from common.views import *
+from store.views import *
 from django.conf import settings
 
 from django.conf.urls.static import static
@@ -47,7 +47,6 @@ urlpatterns = [
     path('admin/login/', auth_views.LoginView.as_view(template_name='admin_login.html'), name='admin_login'),
     path('admin/', admin.site.urls),
     path('store/', include('store.urls')),
-=======
 
     path('get_product_sizencolor/' ,get_product_sizencolor , name='get_product_sizencolor'),
     path('get_available_colors/' ,get_available_colors , name='get_available_colors'),
@@ -110,7 +109,6 @@ urlpatterns = [
     path('<str:cate>/' ,section , name='section'),
 
 
->>>>>>> 97121af5c065cc5353dd3fa07693a8054813088e
 ]
 
 
