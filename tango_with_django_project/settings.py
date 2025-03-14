@@ -60,8 +60,8 @@ INSTALLED_APPS = [
 
 
 EXTERNAL_APPS = [
-    'app',
-    'admin_app'
+    'common',
+    'store'
  ]
 
 
@@ -81,8 +81,8 @@ INSTALLED_APPS += EXTERNAL_APPS
 # }
 
 
-DJANGO_SUPERUSER_USERNAME = superuser_name
-DJANGO_SUPERUSER_PASSWORD = superuser_password
+#DJANGO_SUPERUSER_USERNAME = superuser_name
+#DJANGO_SUPERUSER_PASSWORD = superuser_password
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
