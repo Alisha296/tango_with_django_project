@@ -142,7 +142,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'tfa_db',  # Replace with your database name
         'USER': 'default',
-        'PASSWORD': database_password,
+        'PASSWORD': '123456',
         'HOST': 'ep-weathered-morning-a4e9uxbk-pooler.us-east-1.aws.neon.tech',
         # 'PORT': '41567',
     }
