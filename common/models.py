@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User as User_1
 from django.contrib.auth.hashers import make_password
 from datetime import timedelta
-from admin_app.models import SubProduct
+from store.models import SubProduct
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
 # from social_django.models import UserSocialAuth
