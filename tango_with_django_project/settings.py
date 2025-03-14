@@ -213,8 +213,8 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = email_user
-EMAIL_HOST_PASSWORD = email_password
+EMAIL_HOST_USER = 'thefashionatelier.march18@gmail.com'
+EMAIL_HOST_PASSWORD = 'the_fashion_atelier'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
