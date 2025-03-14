@@ -67,5 +67,4 @@ urlpatterns = [
     
     # URL pattern for deleting an order
     path('order_delete/<int:order_id>/', views.order_delete, name='order_delete'),
->>>>>>> 97121af5c065cc5353dd3fa07693a8054813088e
 ]
