@@ -29,8 +29,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-<<<<<<< HEAD
+from django.contrib import store
 from django.urls import path, include
 =======
 from django.urls import path
@@ -44,12 +43,9 @@ from django.contrib.auth.views import LogoutView
 from django.urls import include
 from django.contrib.auth import views as auth_views
 
->>>>>>> 97121af5c065cc5353dd3fa07693a8054813088e
-
 urlpatterns = [
     path('admin/login/', auth_views.LoginView.as_view(template_name='admin_login.html'), name='admin_login'),
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
     path('store/', include('store.urls')),
 =======
 
