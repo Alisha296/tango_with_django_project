@@ -1,5 +1,6 @@
 from django.db import models
-from common.models import User
+from django.apps import apps
+from django.db import models
 # Create your models here.
 import requests
 
