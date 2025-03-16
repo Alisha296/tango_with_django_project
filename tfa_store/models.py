@@ -70,8 +70,8 @@ class ProductSizeNColor(models.Model):
 class SubProduct(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     description = models.TextField()
-    # image = models.ImageField(upload_to='images/products/')
-    image = models.CharField(max_length=5000, null=True, blank=True, default='')
+    image = models.ImageField(upload_to='images/products/', null=True, blank=True)
+    #image = models.CharField(max_length=5000, null=True, blank=True, default='')
     product_size_color = models.ManyToManyField(ProductSizeNColor)
     # color = models.CharField(max_length=50)
     # quantity = models.IntegerField()
