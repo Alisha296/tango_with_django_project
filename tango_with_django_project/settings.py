@@ -121,5 +121,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 HASH_KEY = 'a5c1d9f3b7e2f4a9c6a1e2f8c3d5b1e4'
 
