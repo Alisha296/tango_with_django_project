@@ -120,3 +120,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+HASH_KEY = 'a5c1d9f3b7e2f4a9c6a1e2f8c3d5b1e4'
+
