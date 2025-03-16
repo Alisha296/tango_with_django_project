@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render,redirect
 
 from django.views.decorators.csrf import csrf_exempt
 from app.models import *
-from admin_app.models import *
+from tfa_store.models import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
@@ -473,8 +473,8 @@ def admin_dashboard(request):
 
 
 @csrf_exempt
-def get_product_sizencolor(requset):
-    product_id = requset.POST.get('id')
+def get_product_sizencolor(request):
+    product_id = request.POST.get('id')
     product = Product.objects.get(id=product_id)
     productsizecolor = ProductSizeNColor.objects.filter(product=product)
     data = []

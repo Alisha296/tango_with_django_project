@@ -6,8 +6,8 @@ from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
-from app.models import *
-from admin_app.models import *
+from common.models import *
+from tfa_store.models import *
 from django.contrib import messages
 import re
 from django.core.mail import send_mail
@@ -15,7 +15,7 @@ from django.conf import settings
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 # from admin_app.views import section
-from app.currency import INRToUSDConverter
+from common.currency import INRToUSDConverter
 from django.contrib.auth import logout
 from django.db.models import F
 from django.views.decorators.csrf import csrf_exempt
