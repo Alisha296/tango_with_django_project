@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User as User_1
 from django.contrib.auth.hashers import make_password
 from datetime import timedelta
-from tfa_store.models import SubProduct
+from django.apps import apps
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
 # from social_django.models import UserSocialAuth
@@ -86,6 +86,8 @@ class placeOrder(models.Model):
 
     def __str__(self):
         return f'{str(self.user_id.user_name)} | {str(self.order_id)}'
+
+SubProduct = apps.get_model('tfa_store', 'SubProduct')
 
 class sub_placeorder(models.Model):
     order_id = models.ForeignKey(placeOrder, on_delete=models.CASCADE, null=True)
