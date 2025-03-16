@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User as User_1
 from django.contrib.auth.hashers import make_password
 from datetime import timedelta
-from django.apps import apps
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
 # from social_django.models import UserSocialAuth
@@ -31,8 +30,9 @@ class User(models.Model):
         # return f'{self.user_name}-{self.time}'
 
 class Cart(models.Model):
+    from tfa_store.models import SubProduct
     uname = models.ForeignKey(User, on_delete=models.CASCADE)
-    SubProduct = apps.get_model('tfa_store', 'SubProduct')
+    subproduct = models.ForeignKey(SubProduct, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     size = models.CharField(max_length=50, null=True)
     color = models.CharField(max_length=50, null=True)
@@ -88,8 +88,9 @@ class placeOrder(models.Model):
         return f'{str(self.user_id.user_name)} | {str(self.order_id)}'
 
 class sub_placeorder(models.Model):
+    from tfa_store.models import SubProduct
     order_id = models.ForeignKey(placeOrder, on_delete=models.CASCADE, null=True)
-    SubProduct = apps.get_model('tfa_store', 'SubProduct')
+    subproduct_id = models.ForeignKey(SubProduct, on_delete=models.CASCADE, null=True)
     color = models.CharField(max_length=50, null=True)
     size = models.CharField(max_length=50, null=True)
     quantity = models.IntegerField(null=True)
