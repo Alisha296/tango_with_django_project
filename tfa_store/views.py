@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render,redirect
 
 from django.views.decorators.csrf import csrf_exempt
-from app.models import *
+from common.models import *
 from tfa_store.models import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -15,28 +15,6 @@ import json
 
 
 # Create your views here.
-
-
-# Save Image To Another Server
-def save_img_to_another_server(file_obj, text):
-    url = "https://images.prathmeshsoni.works/images/?format=json"
-
-    files=[
-        # ('file',('demo.png',open('demo.png','rb'),'image/png'))
-        ('file', (file_obj.name, text, file_obj.content_type))
-    ]
-    headers = {
-        'Authorization': 'token 9202c558d91744d146cf96f4f9bf464240acfbb9',
-        'Origin': 'https://images.prathmeshsoni.works',
-        'Referer': f'{url}',
-    }
-
-    response = requests.request("POST", url, headers=headers, data={}, files=files)
-    try:
-        json_data = response.json()
-        return json_data['file']
-    except:
-        return ''
 
 
 def add_product(request):

@@ -126,10 +126,7 @@ def search(request):
         
 # ===============================================================================================================
 
-"""
-Contact us  line no: 107-121
-About us    line no: 124-126
-"""
+
 
 def contact(request):
     context = check_user(request)
@@ -152,41 +149,14 @@ def about(request):
     context = check_user(request)
     return render(request, 'about.html', context)
 
-# ===============================================================================================================
 
-"""
-                                Currency Convertor for convert INR to USD
-                                using API real time update
-s"""
-
-def currency(temp_,currency_type):
-    
-    currency_converter = INRToUSDConverter(api_key='fca_live_YmDDOQ53V2ORAoTPnzY4M8vJOBhlmqbFi6NNmUBp')
-    # currency_type = request.session.get('currency')
-    print('currency_type = ',currency_type)  
-    try:
-        if not currency_type:
-            currency_type = ''
-            # request.session['currency'] = currency_type
-
-        if 'USD' in currency_type:
-            for product in temp_:
-                product.product.price_usd = currency_converter.convert_inr_to_usd(product.product.price)
-
-        else:
-            for product in temp_:
-                product.product.price_usd = product.product.price
-    except Exception as e:
-        print(e)
-
-# ===============================================================================================================
 
 
 """
 Product Section 
 Three section MAN, WOMAN and KIDS
 according cate name display product
-line no: 166-184
+
 
 Show Product
 Show Product Details
@@ -262,13 +232,13 @@ def show_product(request, id):
 
 
 """
-Below function for the are use for ajax request
+
 
 get_available_colors:- get the available colors based on the selected size
-line no: 242-257
+
 
 check_stock_quantity:- check the stock quantity based on the selected size and color
-line no: 259-270
+
 
 check_stock:- check the stock quantity based on the selected size and color
 """
