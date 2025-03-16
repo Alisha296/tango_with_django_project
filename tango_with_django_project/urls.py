@@ -106,7 +106,7 @@ urlpatterns = [
     path('show_product/<int:id>/', show_product, name='show_product'),
     path('<str:cate>/' ,section , name='section'),
     path('tfa-store/', include('tfa_store.urls')),
-
+]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
