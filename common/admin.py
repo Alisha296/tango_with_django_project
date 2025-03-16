@@ -1,5 +1,6 @@
 from tfa_store.models import *  
 from common.models import *
+from django.contrib import admin
 
 # Register your models here.
 
