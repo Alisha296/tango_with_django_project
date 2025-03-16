@@ -32,7 +32,9 @@ class User(models.Model):
 
 class Cart(models.Model):
     uname = models.ForeignKey(User, on_delete=models.CASCADE)
-    subproduct = models.ForeignKey(SubProduct, on_delete=models.CASCADE)
+    subproduct = models.ForeignKey(
+        'tfa_store.SubProduct',  
+        on_delete=models.CASCADE)
     quantity = models.IntegerField()
     size = models.CharField(max_length=50, null=True)
     color = models.CharField(max_length=50, null=True)
@@ -87,11 +89,13 @@ class placeOrder(models.Model):
     def __str__(self):
         return f'{str(self.user_id.user_name)} | {str(self.order_id)}'
 
-SubProduct = apps.get_model('tfa_store', 'SubProduct')
-
 class sub_placeorder(models.Model):
     order_id = models.ForeignKey(placeOrder, on_delete=models.CASCADE, null=True)
-    subproduct_id = models.ForeignKey(SubProduct, on_delete=models.CASCADE, null=True)
+    subproduct_id = models.ForeignKey(
+        'tfa_store.SubProduct',  # Use string reference
+        on_delete=models.CASCADE,
+        null=True
+    )
     color = models.CharField(max_length=50, null=True)
     size = models.CharField(max_length=50, null=True)
     quantity = models.IntegerField(null=True)
