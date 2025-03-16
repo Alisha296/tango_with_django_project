@@ -1,6 +1,5 @@
 from django.contrib import tfa_store
 from common.models import *
-from tfa_store.models import *
 
 # Register your models here.
 
