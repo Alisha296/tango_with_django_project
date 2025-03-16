@@ -15,7 +15,6 @@ from django.conf import settings
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 # from admin_app.views import section
-from common.currency import INRToUSDConverter
 from django.contrib.auth import logout
 from django.db.models import F
 from django.views.decorators.csrf import csrf_exempt
