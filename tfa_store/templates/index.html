@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Navigation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #fff;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        /* Left search box */
+        .search-box {
+            flex: 1;
+            max-width: 300px;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 8px 35px 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .search-box .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+        /* Center LOGO */
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        .logo img{
+            width:95px;
+        }
+        /* Right icons + text */
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+        }
+        .nav-item i {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .fas img{
+            width: 20px;
+        }
+        .content{
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .img img{
+            height: 200px;
+            min-width: 100%;
+        }
+        .commodity{
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+        }
+        .commodity img{
+            width: 100px;
+        }
+        .footer {
+          padding: 20px 0;
+          border-top: 5px dashed #555;
+          text-align: center;
+        }
+        
+        .footer-container {
+          display: flex;
+          justify-content: space-around;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        
+        .footer-column {
+          flex: 1;
+          padding: 10px;
+        }
+        
+        .footer-column h3 {
+          font-size: 16px;
+          margin-bottom: 10px;
+          border-bottom: 2px solid #555;
+          display: inline-block;
+          padding-bottom: 5px;
+        }
+        
+        .footer-column ul {
+          list-style: none;
+          padding: 0;
+        }
+        
+        .footer-column ul li {
+          margin: 5px 0;
+        }
+        
+        .footer-column a {
+          color: black;
+          text-decoration: none;
+        }
+        
+        
+        .footer-column img {
+          width: 20px;
+          height: auto;
+          margin: 5px;
+        }
+        .menu {
+            width: 200px;
+  
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .menu-item {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            
+        }
+        .menu-item img{
+          width: 15px;
+        }
+
+        .menu-item:hover {
+            background: #e0e0e0;
+        }
+
+        .submenu {
+            display: none;
+            background: #fff;
+            padding-left: 20px;
+            border-left: 3px solid #007BFF;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 8px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .submenu a:hover {
+            background: #f0f0f0;
+        }
+        .show{
+          display: flex;
+        }
+        /* 右侧内容区域 */
+        .commodity {
+            flex: 1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .commodity-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .commodity-item:last-child {
+            border-bottom: none;
+        }
+        /* 商品详情 */
+        .detail-view {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .detail-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .main-image img {
+            width: 300px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .thumbnail-list {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .thumbnail-list img {
+            width: 50px;
+            height: auto;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .thumbnail-list img:hover {
+            border-color: #007BFF;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <!-- Left search box -->
+        <div class="search-box">
+            <input type="text" placeholder="Search products...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <!-- Center LOGO -->
+        <a href="index.html">
+            <div class="logo"><img  src="./img/logo1.jpg" alt=""></div>
+        </a>
+
+        <!-- Right icons + text -->
+        <div class="nav-icons">
+            <a href="./header/mine.html" class="nav-item">
+                <i class="fas fa-user">
+                    <img src="./img/img1.svg" alt="">
+                </i>
+                <span>Mine</span>
+            </a>
+            <a href="./header/like.html" class="nav-item">
+                <i class="fas fa-heart">
+                    <img src="./img/img2.svg" alt="">
+                </i>
+                <span>Favorites</span>
+            </a>
+            <a href="./header/shapping.html" class="nav-item">
+                <i class="fas fa-shopping-cart">
+                    <img src="./img/img3.svg" alt="">
+                </i>
+                <span>Cart</span>
+            </a>
+        </div>
+    </div>
+    <div class="content" >
+        <div>
+            <select id="fruits" name="fruits">
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+              <option value="Kids">Kids</option>
+            </select>
+        </div>
+        <div class="men" >
+          <div class="img" >
+              <img src="./img/img1.jfif" alt="">
+          </div>
+          <div class="commodity" >
+          </div>
+        </div>
+        <div class="show women" id="women" >
+          <div class="menu">
+            <h2>make</h2>
+            <div class="menu-item" onclick="toggleMenu('menu1')"><span>colour</span><img src="./img/img4.svg" alt=""></div>
+            <div class="submenu" id="menu1">
+              <a onclick="selectFilter('color', 'red')">red</a>
+              <a onclick="selectFilter('color', 'blue')">blue</a>
+            </div>
+    
+            <div class="menu-item" onclick="toggleMenu('menu2')"><span>size</span><img src="./img/img4.svg" alt=""></div>
+            <div class="submenu" id="menu2">
+              <a onclick="selectFilter('size', 'S yard')">S yard</a>
+              <a onclick="selectFilter('size', 'M yard')">M yard</a>
+              <a onclick="selectFilter('size', 'L yard')">L yard</a>
+            </div>
+    
+            <div class="menu-item" onclick="toggleMenu('menu3')"><span>price</span><img src="./img/img4.svg" alt=""></div>
+            <div class="submenu" id="menu3">
+              <a onclick="selectFilter('price', '100-200')">100-200</a>
+              <a onclick="selectFilter('price', '200-300')">200-300</a>
+            </div>
+          </div>
+          <!--  Right content -->
+          
+          <div class="commodity" id="commodity">
+            <p>selection condition...</p>
+          </div>
+        </div>
+        <div id="detail-view" class="detail-view" style="display: none;">
+            <button style="width: 100px;height: 30px;" onclick="hideProductDetail()">return</button>
+            <div class="detail-left">
+                <div class="main-image">
+                    <img id="main-img" src="" alt="商品大图">
+                </div>
+                <div class="thumbnail-list" id="thumbnail-list">
+                    <!-- Map list -->
+                </div>
+            </div>
+            <div class="detail-right">
+                <h2 id="detail-title"></h2>
+                <p id="detail-price"></p>
+                <p id="detail-rating"></p> <!-- ⭐ Score presentation -->
+        
+                <!-- size select -->
+                <div class="size-selection" style="margin-top: 10px;" >
+                    <h3>Select size：</h3>
+                    <select id="size-options" style="margin-top: 10px;" >
+                        <option value="S yard">S yard</option>
+                        <option value="M yard">M yard</option>
+                        <option value="L yard">L yard</option>
+                    </select>
+                </div>
+        
+                <!-- Checkout & Collection -->
+                <div class="detail-buttons" style="display: flex;margin-top: 10px;" >
+                    <div style="display: flex;align-items: center;border: 1px solid;padding:10px;cursor: pointer;" onclick="addToCart()" >
+                      <p>settle accounts</p>
+                      <img style="width: 20px;margin-left: 15px;" src="./img/img3.svg" alt="">
+                    </div>
+                    <img id="like-btn" onclick="toggleLike()" style="width: 35px;margin-left: 20px;cursor: pointer;" src="./img/img2.svg" alt="">
+                </div>
+            </div>
+        </div>
+      
+      
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- First Column: Social Media -->
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <ul>
+            <li><a href="https://www.facebook.com" target="_blank"><img src="./img/brand1.svg" alt="Google"></a></li>
+            <li><a href="https://www.Pinterest.com" target="_blank"><img src="./img/brand2.svg" alt="Baidu"></a></li>
+            <li><a href="https://www.twitter.com" target="_blank"><img src="./img/brand3.svg" alt="GitHub"></a></li>
+          </ul>
+        </div>
+
+        <!-- Second Column: Information -->
+        <div class="footer-column">
+          <h3>Information</h3>
+          <ul>
+            <li><a href="./footer/aboutus.html">About Us</a></li>
+            <li><a href="./footer/contactus.html">Contact Us</a></li>
+            <li>FAQ</li>
+          </ul>
+        </div>
+
+        <!-- Third Column: Policies -->
+        <div class="footer-column">
+          <h3>Policies</h3>
+          <ul>
+            <li><a href="./footer/privacy.html">Privacy Policy</a></li>
+            <li><a href="./footer/clause.html">Terms & Conditions</a></li>
+            <li><a href="./footer/geogle.html">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+</body>
+<script>
+  // The selected filter
+  let selectedFilters = {
+      color: null,
+      size: null,
+      price: null
+  };
+  // Currently selected category
+  let currentCategory = "Men";
+
+  // Fake data (simulated goods)
+  const products = [
+      { id: 1, name: "衬衫",select:'Women', color: "red", size: "S yard", price: "100-200", img: "./img/shopping/yf1.png",jiage:188 },
+      { id: 2, name: "leeT恤",select:'Women', color: "red", size: "M yard", price: "100-200", img: "./img/shopping/yf5.png",jiage:166 },
+      { id: 3, name: "lccT恤",select:'Women', color: "blue", size: "L yard", price: "200-300", img: "./img/shopping/yf8.png",jiage:245 },
+      { id: 4, name: "geeT恤",select:'Women', color: "blue", size: "S yard", price: "100-200", img: "./img/shopping/yf12.png",jiage:128 },
+  ];
+  // Fake data (simulated goods)
+  const products1 = [
+      { id: 1, name: "衬衫",select:'Men', color: "red", size: "S yard", price: "100-200", img: "./img/shopping/yf1.png",jiage:188 },
+      { id: 2, name: "leeT恤",select:'Men', color: "red", size: "M yard", price: "100-200", img: "./img/shopping/yf5.png",jiage:166 },
+      { id: 3, name: "lccT恤",select:'Men', color: "blue", size: "L yard", price: "200-300", img: "./img/shopping/yf8.png",jiage:245 },
+      { id: 4, name: "geeT恤",select:'Men', color: "blue", size: "S yard", price: "100-200", img: "./img/shopping/yf12.png",jiage:128 },
+  ];
+  // Expand/collapse the menu
+  function toggleMenu(id, element) {
+      var submenu = document.getElementById(id);
+      if (submenu.style.display === "block") {
+          submenu.style.display = "none";
+          element.classList.remove("open");
+      } else {
+          submenu.style.display = "block";
+          element.classList.add("open");
+      }
+  }
+
+  // Selection filter
+  function selectFilter(type, value) {
+      selectedFilters[type] = value;
+      updateCommodityList();
+  }
+
+  // Update the product list on the right
+  function updateCommodityList() {
+    let filteredProducts = products.filter(product => {
+        return (!selectedFilters.color || product.color === selectedFilters.color) &&
+               (!selectedFilters.size || product.size === selectedFilters.size) &&
+               (!selectedFilters.price || product.price === selectedFilters.price);
+    });
+
+    const commodityDiv = document.getElementById("commodity");
+    commodityDiv.innerHTML = ""; 
+
+    // If there are no filters, all items are displayed
+    if (!selectedFilters.color && !selectedFilters.size && !selectedFilters.price) {
+        filteredProducts = products;
+    }
+
+    if (filteredProducts.length === 0) {
+        commodityDiv.innerHTML = "<p>暂无符合条件的商品</p>";
+    } else {
+        filteredProducts.forEach(product => {
+            const div = document.createElement("div");
+            div.classList.add("commodity-item");
+
+            const img = document.createElement("img");
+            img.src = product.img;
+            img.alt = product.name;
+
+            const name = document.createElement("p");
+            name.innerText = product.name;
+            // Add a click event to jump to the details page
+
+            
+            div.appendChild(img);
+            div.appendChild(name);
+            commodityDiv.appendChild(div);
+        });
+    }
+}
+//Details -- Like button
+function toggleLike() {
+    const product = {
+        id: document.getElementById("detail-title").innerText,
+        name: document.getElementById("detail-title").innerText,
+        price: document.getElementById("detail-price").innerText,
+        size: document.getElementById("size-options").value,
+        img: document.getElementById("main-img").src
+    };
+
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const index = favorites.findIndex(item => item.id === product.id);
+
+    if (index === -1) {
+        //If the item is not in the favorites, add it
+        favorites.push(product);
+        alert("已加入收藏");
+    } else {
+        // If you already have a favorite, cancel it
+        favorites.splice(index, 1);
+        alert("已取消收藏");
+    }
+
+    // Store locally
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+//Render men merchandise list
+function mencommodity(){
+    const commodityDiv = document.querySelector('.commodity')
+    products1.forEach(product =>{
+        const img = document.createElement("img");
+        img.src = product.img;
+        img.onclick =() => {
+            showProductDetail(product); // Bind click event
+        }
+        commodityDiv.appendChild(img)
+    })
+
+}
+mencommodity()
+// Initialize to display all items by default
+updateCommodityList();
+document.addEventListener("DOMContentLoaded", function () {
+    const selectBox = document.getElementById("fruits");
+    const menSection = document.querySelector(".men");
+    const womenSection = document.querySelector(".show.women");
+
+    function toggleSections() {
+        const selectedValue = selectBox.value;
+        if (selectedValue === "Men") {
+            menSection.style.display = "block";
+            currentCategory = "Men";
+            womenSection.style.display = "none";
+        } else if (selectedValue === "Women") {
+            menSection.style.display = "none";
+            currentCategory = "Women";
+            womenSection.style.display = "flex";
+        }
+    }
+
+    // Listen for select changes
+    selectBox.addEventListener("change", toggleSections);
+
+    // Initialize the display when the page loads
+    toggleSections();
+});
+
+// Simulate a small picture of the product
+const productImages = {
+    1: ["./img/shopping/yf1.png", "./img/shopping/yf2.png", "./img/shopping/yf3.png", "./img/shopping/yf4.png"],
+    2: ["./img/shopping/yf5.png", "./img/shopping/yf6.png", "./img/shopping/yf7.png"],
+    3: ["./img/shopping/yf8.png", "./img/shopping/yf9.png", "./img/shopping/yf10.png"],
+    7: ["./img/shopping/yf11.png", "./img/shopping/yf12.png", "./img/shopping/yf13.png", "./img/shopping/yf14.png"],
+};
+
+// Monitor product click, display details
+
+function showProductDetail(product) {
+    const detailView = document.getElementById("detail-view");
+    const mainImg = document.getElementById("main-img");
+    const thumbnailList = document.getElementById("thumbnail-list");
+    const detailTitle = document.getElementById("detail-title");
+    const detailPrice = document.getElementById("detail-price");
+    const detailRating = document.getElementById("detail-rating");
+    const men = document.querySelector('.men')
+    const commodityDiv = document.getElementById("women");
+    const fruits = document.getElementById("fruits");
+
+    // Update product details
+    detailTitle.innerText = product.name;
+    detailPrice.innerText = `price：${product.jiage} $`;
+    detailRating.innerHTML = generateRating(product.rating); // Show score
+    mainImg.src = product.img;
+
+    thumbnailList.innerHTML = ""; // Clear the list of small images
+    if (productImages[product.id]) {
+        productImages[product.id].forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.onclick = () => mainImg.src = src;
+            thumbnailList.appendChild(img);
+        });
+    }
+
+    // Clear the list of small images
+    detailView.style.display = "flex";
+    commodityDiv.style.display = "none";
+    fruits.style.display = "none"; // Hide the drop-down menu
+    men.style.display = "none"; // 隐藏men菜单
+
+}
+// Rating star display
+function generateRating(rating) {
+    let stars = ""; 
+    for (let i = 0; i < 5; i++) {
+        stars += i < rating ? "⭐" : "☆";
+    }
+    return `score: ${stars}`;
+}
+function hideProductDetail() {
+    if(currentCategory === "Men") {
+        document.querySelector('.men').style.display = "block"; // 显示men菜单
+    }else{
+        document.getElementById("women").style.display = "flex"; // Show product list
+    }
+
+    document.getElementById("detail-view").style.display = "none";
+    document.getElementById("fruits").style.display = "block"; // The drop-down menu is displayed
+}
+
+// Bind item click event
+document.getElementById("commodity").addEventListener("click", function (e) {
+    let target = e.target.closest(".commodity-item");
+    if (!target) return;
+
+    let productName = target.querySelector("p").innerText;
+    let product = products.find(p => p.name === productName);
+    if (product) {
+        showProductDetail(product);
+    }
+});
+function addToCart() {
+    const product = {
+        name: document.getElementById("detail-title").innerText,
+        price: document.getElementById("detail-price").innerText,
+        size: document.getElementById("size-options").value,
+        img: document.getElementById("main-img").src
+    };
+
+    let cart = [product];
+
+    // Save shopping cart data back to local storage
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("商品已添加到购物车！");
+}
+
+</script>
+
+</html>

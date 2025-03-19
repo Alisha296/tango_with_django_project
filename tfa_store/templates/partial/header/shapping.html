@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.search-box {
+    flex: 1;
+    max-width: 300px;
+    position: relative;
+}
+.search-box input {
+    width: 100%;
+    padding: 8px 35px 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.search-box .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+.logo img{
+    width: 95px;
+}
+.nav-icons {
+    display: flex;
+    gap: 20px;
+}
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+.nav-item img {
+    width: 20px;
+    margin-bottom: 5px;
+}
+.fas img {
+    width: 20px;
+}
+.cart-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+.cart-item img {
+    width: 80px;
+    height: auto;
+    margin-right: 10px;
+}
+.cart-item .info {
+    flex: 1;
+}
+.cart-item .quantity {
+    display: flex;
+    align-items: center;
+}
+.cart-item .quantity button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+}
+.cart-total {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.cart-total1{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.cart-total2{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+.cart-total3{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.cart-total4{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+.cart-total5{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.site{
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+}
+.site p{
+    margin: 5px 0;
+}
+.site p::before{
+    content: "*";
+    color: red;
+    font-size: 20px;
+    margin-right: 5px;
+}
+.linefeed{
+    display: flex;
+    margin: 5px 0;
+}
+.linefeed .ed{
+    display: flex;
+}
+.linefeed .ed p{
+    margin: 0 10px;
+}
+.payment{
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+}
+.payment p{
+    margin: 10px 0;
+}
+.payment div{
+    margin: 10px 0;
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div></div>
+        <a href="../index.html">
+            <div class="logo"><img src="../img/logo1.jpg" alt=""></div>
+        </a>
+        <div class="nav-icons">
+            <a href="mine.html" class="nav-item">
+                <i class="fas fa-user">
+                    <img src="../img/img1.svg" alt="">
+                </i>
+                <span>My Account</span>
+            </a>
+            <a href="like.html" class="nav-item">
+                <i class="fas fa-heart">
+                    <img src="../img/img2.svg" alt="">
+                </i>
+                <span>Favorites</span>
+            </a>
+            <a href="shapping.html" class="nav-item">
+                <i class="fas fa-shopping-cart">
+                    <img src="../img/img3.svg" alt="">
+                </i>
+                <span>Shopping Cart</span>
+            </a>
+        </div>
+    </div>
+    <div class="site" style="display: none;" >
+        <h2>Shipping Address</h2>
+        <p>Full Name</p>
+        <input type="text">
+        <p>Address1</p>
+        <input type="text">
+        <p>Address2</p>
+        <input type="text">
+        <div class="linefeed" >
+            <div class="ed" >
+                <p>City</p>
+                <input type="text">
+            </div>
+            <div class="ed" >
+                <p>Postal Code</p>
+                <input type="text">
+            </div>
+        </div>
+        <div class="linefeed" >
+            <div class="ed" >
+                <p>County</p>
+                <input type="text">
+            </div>
+            <div class="ed" >
+                <p>Country</p>
+                <input type="text">
+            </div>
+        </div>
+        <button id="checkout-btn">Check Out</button>
+    </div>
+    <div class="payment" style="display: none;"  >
+        <p>Contact Information</p>
+        <p>Shipping Information</p>
+        <div>
+            <span>Card Number</span>
+            <input type="text">
+        </div>
+        <div>
+            <span>Name on Card</span>
+            <input type="text">
+        </div>
+        <div>
+            <span>Expiry Date</span>
+            <input type="text">
+        </div>
+        <div>
+            <span>Security Code</span>
+            <input type="password">
+        </div>
+        <div style="display: flex;justify-content: center;" ><p style="border: 1px solid;padding: 5px;" id="paynow" >PAY NOW</p></div>
+    </div>    
+    <div class="cart-container">
+    </div>
+</body>
+<script>
+function shoppingcart() {
+    const shopping = localStorage.getItem('cart');
+    const cartContainer = document.querySelector(".cart-container"); 
+    const site = document.querySelector(".site"); 
+    const storedAddress = JSON.parse(localStorage.getItem('address') || "{}");
+    if (shopping) {
+        const cartItems = JSON.parse(shopping); // 解析 JSON 数据
+        const cartContainer = document.querySelector(".cart-container"); // 获取购物车容器
+        
+        cartContainer.innerHTML = ""; // 清空旧数据，避免重复渲染
+
+        cartItems.forEach(item => {
+            const itemDiv = document.createElement("div");
+            itemDiv.classList.add("cart-item");
+
+            // 创建商品图片
+            const img = document.createElement("img");
+            img.src = item.img;
+            img.alt = item.name;
+            img.style.width = "80px"; // 统一图片大小
+            img.style.marginRight = "10px";
+
+            // 创建商品信息容器
+            const infoDiv = document.createElement("div");
+            infoDiv.classList.add("info");
+
+            const name = document.createElement("p");
+            name.innerText = item.name;
+
+            let priceText = item.price.replace("价格：", "").replace(" 元", ""); // 处理价格格式
+            const price = document.createElement("p");
+            price.innerText = `$${priceText}`;
+
+            infoDiv.appendChild(name);
+            infoDiv.appendChild(price);
+
+            // 组合所有元素
+            itemDiv.appendChild(img);
+            itemDiv.appendChild(infoDiv);
+            const Pricetotal1 = document.createElement("div")
+            const Pricetotal2 = document.createElement("div")
+            const Pricetotal3 = document.createElement("div")
+            const Pricetotal4 = document.createElement("div")
+            const Pricetotal5 = document.createElement("div")
+            Pricetotal1.classList.add("cart-total1");
+            Pricetotal2.classList.add("cart-total2");
+            Pricetotal3.classList.add("cart-total3");
+            Pricetotal4.classList.add("cart-total4");
+            Pricetotal5.classList.add("cart-total5");
+            const commodityprices1 = document.createElement("div");
+            const commodityprices2 = document.createElement("div");
+            const commodityprices3 = document.createElement("div");
+            const commodityprices4 = document.createElement("div");
+            const commodityprices5 = document.createElement("div");
+            const commodityprices6 = document.createElement("div");
+            commodityprices1.innerText = 'Subtotal'
+            commodityprices2.innerText = priceText
+            commodityprices3.innerText = 'Shipping'
+            commodityprices4.innerText = '10'
+            commodityprices5.innerText = 'Total'
+            commodityprices6.innerText = `$${Number(priceText) + 10}`
+            Pricetotal4.innerText = 'Payment Options'
+            const paymentMethods = ["../img/zf1.svg", "../img/zf2.svg", "../img/zf3.svg", "../img/zf4.svg"]; // 图片路径
+            paymentMethods.forEach(src => {
+                const img = document.createElement("img");
+                img.src = src;
+                img.style.width = "50px"; // 统一大小
+                img.style.margin = "5px"; // 适当间距
+                img.addEventListener("click", function() {
+                    // 点击支付方式时显示地址表单
+                    site.style.display = "block";
+                    cartContainer.style.display = "none";
+                });
+                Pricetotal5.appendChild(img);
+            });
+            Pricetotal1.appendChild(commodityprices1)
+            Pricetotal1.appendChild(commodityprices2)
+            Pricetotal2.appendChild(commodityprices3)
+            Pricetotal2.appendChild(commodityprices4)
+            Pricetotal3.appendChild(commodityprices5)
+            Pricetotal3.appendChild(commodityprices6)
+            cartContainer.appendChild(itemDiv);
+            cartContainer.appendChild(Pricetotal1);
+            cartContainer.appendChild(Pricetotal2);
+            cartContainer.appendChild(Pricetotal3);
+            cartContainer.appendChild(Pricetotal4);
+            cartContainer.appendChild(Pricetotal5);
+        });
+    } else {
+        console.log("购物车为空");
+    }
+}
+
+// 监听 Checkout 按钮点击事件，保存地址
+document.addEventListener("DOMContentLoaded", function() {
+    const checkoutBtn = document.getElementById("checkout-btn");
+    const payment = document.querySelector(".payment");
+    const site = document.querySelector(".site");
+    checkoutBtn.addEventListener("click", function() {
+        const inputs = document.querySelectorAll(".site input");
+        
+        // 确保所有需要的输入框都已加载
+        if (inputs.length < 7) {
+            console.error("Missing input fields in the shipping address form.");
+            return;
+        }
+
+        // 获取所有输入框的值
+        const address = {
+            fullName: inputs[0].value.trim(),
+            address1: inputs[1].value.trim(),
+            address2: inputs[2].value.trim(),
+            city: inputs[3].value.trim(),
+            postalCode: inputs[4].value.trim(),
+            county: inputs[5].value.trim(),
+            country: inputs[6].value.trim()
+        };
+
+        // 检查必填字段是否为空
+        if (!address.fullName || !address.address1 || !address.city || !address.postalCode) {
+            alert("Please fill in the required fields.");
+            return;
+        }
+
+        // 保存地址到本地存储
+        localStorage.setItem("address", JSON.stringify(address));
+        site.style.display = "none"; // 隐藏地址表单
+        payment.style.display = "block"; // 显示支付表单
+        // 刷新页面
+        //window.location.reload();
+    });
+
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const payNowBtn = document.getElementById('paynow')
+    payNowBtn.addEventListener("click", function() {
+        // 获取购物车商品信息
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (cart.length === 0) {
+            alert("购物车为空，无法生成订单！");
+            return;
+        }
+
+        // 获取用户地址信息
+        const address = JSON.parse(localStorage.getItem("address"));
+        if (!address) {
+            alert("请填写收货地址！");
+            return;
+        }
+
+        // 生成模拟订单
+        const order = {
+            orderId: "ORDER-" + new Date().getTime(), // 使用时间戳生成唯一订单号
+            items: cart, // 商品信息
+            totalPrice: cart.reduce((sum, item) => sum + Number(item.price.replace("价格：", "").replace(" 元", "")), 10), // 总价 (商品价格 + 10 运输费)
+            shippingAddress: address, // 收货地址
+            paymentMethod: "Credit Card", // 模拟支付方式
+            status: "Paid", // 订单状态
+            orderTime: new Date().toLocaleString() // 订单生成时间
+        };
+
+        // 将订单存入本地存储
+        localStorage.setItem("order", JSON.stringify(order));
+
+        // 清空购物车
+        localStorage.removeItem("cart");
+
+        alert("订单已成功生成！订单号：" + order.orderId);
+        //window.location.href = "order-success.html"; // 可跳转到订单成功页面
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", shoppingcart);
+
+
+
+</script>
+</html>
