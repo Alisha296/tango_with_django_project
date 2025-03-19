@@ -269,37 +269,37 @@ function shoppingcart() {
     const site = document.querySelector(".site"); 
     const storedAddress = JSON.parse(localStorage.getItem('address') || "{}");
     if (shopping) {
-        const cartItems = JSON.parse(shopping); // 解析 JSON 数据
-        const cartContainer = document.querySelector(".cart-container"); // 获取购物车容器
+        const cartItems = JSON.parse(shopping); // Parsing JSON data
+        const cartContainer = document.querySelector(".cart-container"); // 
         
-        cartContainer.innerHTML = ""; // 清空旧数据，避免重复渲染
+        cartContainer.innerHTML = ""; // Clear old data to avoid repeated rendering
 
         cartItems.forEach(item => {
             const itemDiv = document.createElement("div");
             itemDiv.classList.add("cart-item");
 
-            // 创建商品图片
+            // Create product images
             const img = document.createElement("img");
             img.src = item.img;
             img.alt = item.name;
-            img.style.width = "80px"; // 统一图片大小
+            img.style.width = "80px"; // Uniform image size
             img.style.marginRight = "10px";
 
-            // 创建商品信息容器
+            // Create a product information container
             const infoDiv = document.createElement("div");
             infoDiv.classList.add("info");
 
             const name = document.createElement("p");
             name.innerText = item.name;
 
-            let priceText = item.price.replace("价格：", "").replace(" 元", ""); // 处理价格格式
+            let priceText = item.price.replace("price：", "").replace("£", ""); // Handle price format
             const price = document.createElement("p");
             price.innerText = `$${priceText}`;
 
             infoDiv.appendChild(name);
             infoDiv.appendChild(price);
 
-            // 组合所有元素
+            // Combine all elements
             itemDiv.appendChild(img);
             itemDiv.appendChild(infoDiv);
             const Pricetotal1 = document.createElement("div")
@@ -325,14 +325,14 @@ function shoppingcart() {
             commodityprices5.innerText = 'Total'
             commodityprices6.innerText = `$${Number(priceText) + 10}`
             Pricetotal4.innerText = 'Payment Options'
-            const paymentMethods = ["../img/zf1.svg", "../img/zf2.svg", "../img/zf3.svg", "../img/zf4.svg"]; // 图片路径
+            const paymentMethods = ["../img/zf1.svg", "../img/zf2.svg", "../img/zf3.svg", "../img/zf4.svg"]; //Image path
             paymentMethods.forEach(src => {
                 const img = document.createElement("img");
                 img.src = src;
-                img.style.width = "50px"; // 统一大小
-                img.style.margin = "5px"; // 适当间距
+                img.style.width = "50px"; // uniform size
+                img.style.margin = "5px"; // Proper spacing
                 img.addEventListener("click", function() {
-                    // 点击支付方式时显示地址表单
+                    // Display address form when payment method is clicked
                     site.style.display = "block";
                     cartContainer.style.display = "none";
                 });
@@ -352,11 +352,11 @@ function shoppingcart() {
             cartContainer.appendChild(Pricetotal5);
         });
     } else {
-        console.log("购物车为空");
+        console.log("Shopping cart is empty");
     }
 }
 
-// 监听 Checkout 按钮点击事件，保存地址
+// Listen for the Checkout button click event and save the address
 document.addEventListener("DOMContentLoaded", function() {
     const checkoutBtn = document.getElementById("checkout-btn");
     const payment = document.querySelector(".payment");
@@ -364,13 +364,13 @@ document.addEventListener("DOMContentLoaded", function() {
     checkoutBtn.addEventListener("click", function() {
         const inputs = document.querySelectorAll(".site input");
         
-        // 确保所有需要的输入框都已加载
+        // Make sure all required input boxes are loaded
         if (inputs.length < 7) {
             console.error("Missing input fields in the shipping address form.");
             return;
         }
 
-        // 获取所有输入框的值
+        // Get the values ​​of all input boxes
         const address = {
             fullName: inputs[0].value.trim(),
             address1: inputs[1].value.trim(),
@@ -381,17 +381,17 @@ document.addEventListener("DOMContentLoaded", function() {
             country: inputs[6].value.trim()
         };
 
-        // 检查必填字段是否为空
+        // Check if a required field is empty
         if (!address.fullName || !address.address1 || !address.city || !address.postalCode) {
             alert("Please fill in the required fields.");
             return;
         }
 
-        // 保存地址到本地存储
+        // Save the address to local storage
         localStorage.setItem("address", JSON.stringify(address));
-        site.style.display = "none"; // 隐藏地址表单
-        payment.style.display = "block"; // 显示支付表单
-        // 刷新页面
+        site.style.display = "none"; // Hide address form
+        payment.style.display = "block"; // Show payment form
+        // refresh page
         //window.location.reload();
     });
 
@@ -399,39 +399,39 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     const payNowBtn = document.getElementById('paynow')
     payNowBtn.addEventListener("click", function() {
-        // 获取购物车商品信息
+        // Get shopping cart product information
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
         if (cart.length === 0) {
-            alert("购物车为空，无法生成订单！");
+            alert("The shopping cart is empty and the order cannot be placed.！");
             return;
         }
 
-        // 获取用户地址信息
+        // Get user address information
         const address = JSON.parse(localStorage.getItem("address"));
         if (!address) {
-            alert("请填写收货地址！");
+            alert("Please fill in the delivery address!");
             return;
         }
 
-        // 生成模拟订单
+        // Generate simulated orders
         const order = {
-            orderId: "ORDER-" + new Date().getTime(), // 使用时间戳生成唯一订单号
-            items: cart, // 商品信息
-            totalPrice: cart.reduce((sum, item) => sum + Number(item.price.replace("价格：", "").replace(" 元", "")), 10), // 总价 (商品价格 + 10 运输费)
-            shippingAddress: address, // 收货地址
-            paymentMethod: "Credit Card", // 模拟支付方式
-            status: "Paid", // 订单状态
-            orderTime: new Date().toLocaleString() // 订单生成时间
+            orderId: "ORDER-" + new Date().getTime(), // Generate unique order number using timestamp
+            items: cart, //Product information
+            totalPrice: cart.reduce((sum, item) => sum + Number(item.price.replace("price：", "").replace("£", "")), 10), // 总价 (商品价格 + 10 运输费)
+            shippingAddress: address, // Shipping address
+            paymentMethod: "Credit Card", // Simulate payment methods
+            status: "Paid", // Order status
+            orderTime: new Date().toLocaleString() // Order generation time
         };
 
-        // 将订单存入本地存储
+        // Save the order to local storage
         localStorage.setItem("order", JSON.stringify(order));
 
-        // 清空购物车
+        // Empty Cart
         localStorage.removeItem("cart");
 
-        alert("订单已成功生成！订单号：" + order.orderId);
-        //window.location.href = "order-success.html"; // 可跳转到订单成功页面
+        alert("The order has been successfully generated! Order No.：" + order.orderId);
+        //window.location.href = "order-success.html"; // You can jump to the order success page
     });
 });
 

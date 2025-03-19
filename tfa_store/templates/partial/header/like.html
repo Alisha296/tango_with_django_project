@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的收藏</title>
+    <title>My Wishlist</title>
     <style>
         * {
             margin: 0;
@@ -126,7 +126,7 @@
     <div class="container">
         <h2>My like</h2>
         <ul class="favorite-list" id="favorite-list">
-            <!-- 收藏商品将在这里动态渲染 -->
+            <!-- Favorite items will be dynamically rendered here -->
         </ul>
     </div>
 
@@ -135,7 +135,7 @@
             const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
             const list = document.getElementById("favorite-list");
 
-            list.innerHTML = ""; // 清空列表，避免重复渲染
+            list.innerHTML = ""; // Clear the list to avoid repeated rendering
 
             if (favorites.length === 0) {
                 list.innerHTML = "<p style='text-align:center;'>no data</p>";
@@ -162,12 +162,12 @@
 
         function removeFavorite(index) {
             let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-            favorites.splice(index, 1); // 删除对应索引的商品
+            favorites.splice(index, 1); // Delete the corresponding index product
             localStorage.setItem("favorites", JSON.stringify(favorites));
-            loadFavorites(); // 重新渲染页面
+            loadFavorites(); // Re-render the page
         }
 
-        // 页面加载时渲染收藏列表
+        // Render the favorites list when the page loads
         window.onload = loadFavorites;
     </script>
 </body>
