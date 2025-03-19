@@ -81,9 +81,7 @@ def home(request):
     new_arrival = SubProduct.objects.filter(created_at__gte=last_week)
     new_arrival = new_product()
     most_buy = most_buy_product()
-    currency(new_arrival,request.session.get('currency'))
-    currency(most_buy,request.session.get('currency'))
-    # print(new_arrival)
+    
     
     order_status = placeOrder.objects.filter(order_status='Pending', delivery_date__lt=today)
     for order in order_status:
