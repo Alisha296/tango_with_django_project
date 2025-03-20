@@ -10,7 +10,8 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import logout
 from django.db.models import Sum
 from django.db.models.functions import TruncMonth
-from datetime import datetime
+#from datetime import datetime
+from django.utils import timezone
 import json
 
 
@@ -388,10 +389,10 @@ def admin_dashboard(request):
     cancel_order = placeOrder.objects.filter(order_status='Cancelled').count()
     delivered_order = placeOrder.objects.filter(order_status='Delivered').count()
 
-    current_year = datetime.now().year
-    start_date = datetime(current_year, 1, 1)
-    end_date = datetime(current_year, 12, 31)
-    print(datetime.now())
+    current_year = timezone.now().year
+    start_date = timezone.datetime(current_year, 1, 1, tzinfo=timezone.get_current_timezone())
+    end_date = timezone.datetime(current_year, 12, 31, 23, 59, 59, tzinfo=timezone.get_current_timezone())
+    print(timezone.now())
     man_purchases = sub_placeorder.objects.filter(
         subproduct_id__product_id__category__name__icontains='Man',
         created_at__range=(start_date, end_date)
