@@ -127,3 +127,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 HASH_KEY = 'a5c1d9f3b7e2f4a9c6a1e2f8c3d5b1e4'
 
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'tfa_store', 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
