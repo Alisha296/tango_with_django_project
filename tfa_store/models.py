@@ -1,6 +1,7 @@
 from django.db import models
 from django.apps import apps
 from django.db import models
+import logging
 from django.utils import timezone
 # Create your models here.
 import requests
@@ -65,7 +66,8 @@ class ProductSizeNColor(models.Model):
         return f'{self.product} - {self.size} | {self.color} | {self.stock_quantity}'
 
 
-    
+logger = logging.getLogger(__name__)
+
 class SubProduct(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     description = models.TextField()
@@ -86,3 +88,9 @@ class SubProduct(models.Model):
     def __str__(self):
         return f'{self.product}'
     
+    def save(self, *args, **kwargs):
+        if not timezone.is_aware(self.created_at):
+            logger.warning(f"Naive datetime detected for created_at: {self.created_at}")
+        if not timezone.is_aware(self.updated_at):
+            logger.warning(f"Naive datetime detected for updated_at: {self.updated_at}")
+        super().save(*args, **kwargs)
