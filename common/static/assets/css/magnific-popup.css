@@ -28,7 +28,7 @@
         z-index: 1043;
         position: fixed;
         outline: none !important;
-        -webkit-backface-visibility: hidden;
+       
       }
       
       .mfp-container {
@@ -249,7 +249,6 @@
         cursor: pointer;
         background: transparent;
         border: 0;
-        -webkit-appearance: none;
         display: block;
         outline: none;
         padding: 0;
@@ -265,7 +264,6 @@
         cursor: pointer;
         background: transparent;
         border: 0;
-        -webkit-appearance: none;
         display: block;
         outline: none;
         padding: 0;
