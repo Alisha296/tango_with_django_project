@@ -142,7 +142,7 @@
     });
 
     function getcolor_bysize(){
-        var product_id = {{product.product.id}};
+        var product_id = {product,product,id};
         var size_id = $('#sizes').val();
 
         $.ajax({
@@ -164,7 +164,7 @@
     }
 
     function getstock() {
-        var product_id = {{product.product.id}};
+        var product_id = {product,product,id};
         var size_id = $('#sizes').val();
         var color_id = $('#colors').val();
 
