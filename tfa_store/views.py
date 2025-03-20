@@ -486,3 +486,12 @@ def edit_product_sizencolor(request):
     return JsonResponse(response_data, safe=False)
 
 
+from django.utils import timezone
+from tfa_store.models import SubProduct
+
+def fix_naive_datetimes():
+    for subproduct in SubProduct.objects.all():
+        if timezone.is_naive(subproduct.created_at):
+            subproduct.created_at = timezone.make_aware(subproduct.created_at, timezone.get_default_timezone())
+            subproduct.save()
+
