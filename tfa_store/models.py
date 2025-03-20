@@ -1,13 +1,14 @@
 from django.db import models
 from django.apps import apps
 from django.db import models
+from django.utils import timezone
 # Create your models here.
 import requests
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.timezone.now()
+    updated_at = models.timezone.now()
 
     class Meta:
             verbose_name_plural = 'Categories'
@@ -19,8 +20,8 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     price = models.IntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.timezone.now()
+    updated_at = models.timezone.now()
 
     class Meta:
         verbose_name_plural = 'Products'
@@ -31,9 +32,8 @@ class Product(models.Model):
             
 class Size(models.Model):
     name = models.CharField(max_length=50)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
+    created_at = models.timezone.now()
+    updated_at = models.timezone.now()
     class Meta:
             verbose_name_plural = 'Sizes'
     def __str__(self):
@@ -42,8 +42,8 @@ class Size(models.Model):
     
 class Color(models.Model):
     name = models.CharField(max_length=100)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.timezone.now()
+    updated_at = models.timezone.now()
     
     class Meta:
             verbose_name_plural = 'Colors'
@@ -56,9 +56,8 @@ class ProductSizeNColor(models.Model):
     size = models.ForeignKey(Size, on_delete=models.CASCADE)
     color = models.ForeignKey(Color, on_delete=models.CASCADE)
     stock_quantity = models.PositiveIntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
+    created_at = models.timezone.now()
+    updated_at = models.timezone.now()
     class Meta:
             verbose_name_plural = 'ProductSizeNColors'
     
@@ -75,8 +74,8 @@ class SubProduct(models.Model):
     product_size_color = models.ManyToManyField(ProductSizeNColor)
     # color = models.CharField(max_length=50)
     # quantity = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.timezone.now()
+    updated_at = models.timezone.now()
     # sizes = models.ManyToManyField(Size, through='SizeSubProduct')
 
     def get_stock_quantity(self):
