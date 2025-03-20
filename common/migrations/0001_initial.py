@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('first_name', models.CharField(max_length=30, null=True)),
                 ('last_name', models.CharField(max_length=30, null=True)),
                 ('street_address', models.TextField(null=True)),
-                ('country', models.CharField(default='India', max_length=30, null=True)),
+                ('country', models.CharField(default='Scotland', max_length=30, null=True)),
                 ('city', models.CharField(max_length=30, null=True)),
                 ('pincode', models.IntegerField(null=True)),
                 ('phone_number', models.BigIntegerField(null=True)),
