@@ -14,9 +14,8 @@ class User(models.Model):
     user_name = models.CharField(max_length=50)
     user_email = models.CharField(max_length=100)
     user_password = models.CharField(max_length=100)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
 
 
     def set_password(self, raw_password):
@@ -36,8 +35,8 @@ class Cart(models.Model):
     quantity = models.IntegerField()
     size = models.CharField(max_length=50, null=True)
     color = models.CharField(max_length=50, null=True)
-    created_at = models.timezone.now()
-    updated_at = models.timezone.now()
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
     class Meta:
             verbose_name_plural = 'Carts'
     
@@ -94,8 +93,8 @@ class sub_placeorder(models.Model):
     size = models.CharField(max_length=50, null=True)
     quantity = models.IntegerField(null=True)
     price = models.IntegerField(null=True)
-    created_at = models.timezone.now()
-    updated_at = models.timezone.now()
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
     def __str__(self):
         time = (self.created_at + timedelta(hours=5, minutes=30)).strftime("%d/%b/%y %I:%M %p")
         return f'{self.order_id}  | {self.created_at}'
@@ -106,8 +105,8 @@ class Contact(models.Model):
     email = models.CharField(max_length=50)
     subject = models.CharField(max_length=50)
     Comments = models.TextField()
-    created_at = models.timezone.now()
-    updated_at = models.timezone.now()
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
     def __str__(self):
         time = (self.created_at + timedelta(hours=5, minutes=30)).strftime("%d/%b/%y %I:%M %p")
         return f'{self.name} - {self.email} |  {time}'
