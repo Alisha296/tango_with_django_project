@@ -1,177 +1,243 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Fashion Atelier</title>
-    <!-- Link to Bootstrap Grid CSS -->
-    <link href="/static/css/bootstrap-grid.min.css" rel="stylesheet">
-    <!-- Link to Custom CSS -->
-    <link href="/static/css/custom.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Header Section -->
-    <header class="container-fluid bg-light py-3">
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} The Fashion Atelier - Home{% endblock %}
+{% block body %}
+    
+<div class="wraper">
+<div class="page-content-wraper">
+    <!-- Intro -->
+    <section id="intro" class="intro"> 
+
+
+    <!-- New Product -->
+    <section class="section-padding">
         <div class="container">
-            <div class="row align-items-center">
-                <!-- Search Bar -->
+            <h2 class="page-title">New Product</h2>
+        </div>
+        <div class="container">
+            <div id="new-tranding" class="product-item-4 owl-carousel owl-theme nf-carousel-theme1">
+                <!-- item.1 -->
+                {% for product in new_arrival %}
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' product.id %}"  >
+                            <img src="{{ product.image }}" alt="{{ product.product.name }}">
+                            
+                            </a>
+                        </div> 
+                        <style>
+                        .sectionimg{
+                            height: 255px !important;
+                            width: 255px !important;
+                        }
+                        </style>
+                         <div class="product-button">
+    
+                            <a href="{% url 'show_product' product.id %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div> 
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="#">{{ product.product.category.name }}</a>
+                        <p class="product-title"><a href="">{{ product.product.name }}</a></p>
+                        <div class="product-rating">
+                            <!-- Add your rating logic here -->
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="#" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">
+                            {{ product.description }}
+                        </p>
+                        <h5 class="item-price">
+                            {% if 'USD' in request.session.currency %}
+                            $ {{ product.product.price_usd|floatformat:2 }}
+                        {% else %}
+                            ₹ {{ product.product.price_usd|floatformat:2 }}
+                        {% endif %}    
+                        </h5>
+                    </div>
+                </div>   {% endfor %}
+                <!-- item.2 -->
+               
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="">
+        <div class="section-padding container-fluid bg-image text-center overlay-light90" data-background-img="static/img/bg/bg_5.jpg" data-bg-position-x="center center">
+            <div class="container">
+                <h2 class="page-title">Shop by Categories</h2>
+            </div>
+        </div>
+        <div class="container container-margin-minus-t">
+            <div class="row">
                 <div class="col-md-4">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Enter keywords to Search Products" aria-label="Search">
-                        <span class="input-group-text">
-                            <img src="/static/img/search-icon-lg.png" alt="Search Icon" width="20">
-                        </span>
+                    <div class="categories-box">
+                        <div class="categories-image-wrap">
+                            <img src="static/img/categories/man4.jpg" width="400" height="600 " alt="" />
+                        </div>
+                        <div class="categories-content">
+                            <a href="/men">
+                                <div class="categories-caption">
+                                    <h3 class="normal">Men</h3>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- Welcome Message -->
-                <div class="col-md-4 text-center">
-                    <p class="mb-0">Welcome to The Fashion Atelier</p>
+                <div class="col-md-4">
+                    <div class="categories-box">
+                        <div class="categories-image-wrap">
+                            <img src="static/img/categories/women3.png" width="400" height="600 " alt="" />
+                        </div>
+                        <div class="categories-content">
+                            <a href="/woman/">
+                                <div class="categories-caption">
+                                    <h3 class="normal">Women</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Login, Currency, Cart -->
-                <div class="col-md-4 text-end">
-                    <a href="#" class="btn btn-outline-primary me-2">Log In</a>
-                    <span class="currency me-2">GBP</span>
-                    <span class="cart">
-                        <i class="bi bi-cart"></i> 0
-                    </span>
+                <div class="col-md-4">
+                    <div class="categories-box">
+                        <div class="categories-image-wrap">
+                            <img src="static/img/categories/kids3.jpg" width="400" height="600 " alt="" />
+                        </div>
+                        <div class="categories-content">
+                            <a href="/kids">
+                                <div class="categories-caption">
+                                    <h3 class="normal">Kids</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                
+              
             </div>
         </div>
-    </header>
+    </section>
+    <!-- End Categories -->
 
-    <!-- Navigation Menu -->
-    <nav class="container-fluid bg-secondary py-2">
+    <section class="section-padding">
         <div class="container">
-            <ul class="nav justify-content-center">
-                <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#">Men</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#">Women</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#">Kids</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+            <h2 class="page-title">New Tranding</h2>
+        </div>
+        <div class="container">
+            <div id="new-tranding" class="product-item-4 owl-carousel owl-theme nf-carousel-theme1">
+                <!-- item.1 -->
+                {% for product in popular_products %}
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' product.id %}"  >
+                            <img src="{{ product.image }}" alt="{{ product.product.name }}">
+                            </a>
+                        </div>
+                        <style>
+                            .sectionimg{
+                                height: 255px !important;
+                                width: 255px !important;
+                            }
+                            </style>
+                     <div class="product-button">
+                         
+                            <a href="{% url 'show_product' product.id %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div> 
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="#">{{ product.product.category.name }}</a>
+                        <p class="product-title"><a href="">{{ product.product.name }}</a></p>
+                        <div class="product-rating">
+                            <!-- Add your rating logic here -->
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="#" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">
+                            {{ product.description }}
+                        </p>
+                     
+                        <h5 class="item-price">
+                            {% if 'USD' in request.session.currency %}
+                            $ {{ product.product.price_usd|floatformat:2 }}
+                        {% else %}
+                            ₹ {{ product.product.price_usd|floatformat:2 }}
+                        {% endif %}
+                        </h5>
+                    </div>
+                </div>   {% endfor %}
+                <!-- item.2 -->
+               
+
+            </div>
+        </div>
+    </section>
+    <!-- End New Product -->
+
+
+    
+    <!-- Brnad Logo -->
+    {% comment %} <section id="brand-logo" class="section-padding brand-logo">
+        <div class="container">
+            <ul class="list-none-ib brand-logo-carousel owl-carousel owl-theme">
+                <li class="brand-item"><a href="#">
+                    <img src="static/img/logo/01.png" alt="nileforest" />
+                </a>
+                </li>
+                <li class="brand-item">
+                    <a href="#">
+                        <img src="static/img/logo/02.png" alt="niletheme" />
+                    </a>
+                </li>
+                <li class="brand-item">
+                    <a href="#">
+                        <img src="static/img/logo/03.png" alt="nile" />
+                    </a>
+                </li>
+                <li class="brand-item">
+                    <a href="#">
+                        <img src="static/img/logo/04.png" alt="forest" />
+                    </a>
+                </li>
+                <li class="brand-item">
+                    <a href="#">
+                        <img src="static/img/logo/05.png" alt="themeforest" />
+                    </a>
+                </li>
+                <li class="brand-item">
+                    <a href="#">
+                        <img src="static/img/logo/06.png" alt="woocommerce" />
+                    </a>
+                </li>
+                <li class="brand-item">
+                    <a href="#">
+                        <img src="static/img/logo/07.png" alt="ecommerce" />
+                    </a>
+                </li>
+                <li class="brand-item">
+                    <a href="#">
+                        <img src="static/img/logo/08.png" alt="html" />
+                    </a>
+                </li>
+                <li class="brand-item">
+                    <a href="#">
+                        <img src="static/img/logo/09.png" alt="multiprapose" />
+                    </a>
+                </li>
+
             </ul>
+
         </div>
-    </nav>
+    </section> {% endcomment %}
+    <!-- End Brandd Logo -->
 
-    <!-- Main Content: New Products -->
-    <main class="container py-5">
-        <h2>New Products</h2>
-        <!-- Men Section -->
-        <section class="mb-5">
-            <h3>Men</h3>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Men Solid Round Neck Cotton Blend T-Shirt</h5>
-                            <p class="card-text">3 Reviews</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Men Solid  Cotton Blend T-Shirt</h5>
-                            <p class="card-text">3 Reviews</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Men Solid  Cotton Blend Hoodie</h5>
-                            <p class="card-text">3 Reviews</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="#" class="btn btn-link">See More</a>
-        </section>
-        <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Men Solid  Cotton Blend Hoodie</h5>
-                            <p class="card-text">3 Reviews</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="#" class="btn btn-link">See More</a>
-        </section>
-
-        <!-- Women Section -->
-        <section class="mb-5">
-            <h3>Women</h3>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Women Printed Viscose Rayon Ethnic Dress</h5>
-                            <p class="card-text">3 Reviews</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Women Printed Pure Cotton Straight Kurta</h5>
-                            <p class="card-text">3 Reviews</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Women Geometric Print Cotton Rayon Straight Kurta</h5>
-                            <p class="card-text">3 Reviews</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="#" class="btn btn-link">See More</a>
-        </section>
-
-        <!-- Kids Section -->
-        <section class="mb-5">
-            <h3>Kids</h3>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Girls Printed Cotton Blend T Shirt</h5>
-                            <p class="card-text">3 Reviews</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Boys Colorblock Cotton Blend T Shirt</h5>
-                            <p class="card-text">3 Reviews</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Boys Striped Pure Cotton T Shirt</h5>
-                            <p class="card-text">3 Reviews</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="#" class="btn btn-link">See More</a>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="container-fluid bg-dark text-white py-3">
-        <div class="container text-center">
-            <p class="mb-1">The Fashion Atelier, Glasgow, UK</p>
-            <p class="mb-0">Contact us: support@thefashionatelier.com | © 2025 The Fashion Atelier</p>
-        </div>
-    </footer>
-
-    <!-- Bootstrap Icons (for cart icon) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-</body>
-</html>
+</div>
+</div>
+{% endblock %}
