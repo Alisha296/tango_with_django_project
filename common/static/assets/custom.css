@@ -1,0 +1,67 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+header {
+    border-bottom: 1px solid #ddd;
+}
+
+.currency {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Navigation */
+nav {
+    background-color: #343a40;
+}
+
+.nav-link:hover {
+    color: #ddd !important;
+}
+
+/* Main Content */
+h2, h3 {
+    color: #333;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: box-shadow 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.card-text {
+    color: #777;
+}
+
+/* Center the cards in the row */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center cards if they don't fill the row */
+}
+
+/* Ensure cards stack on smaller screens */
+@media (max-width: 767px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+}
