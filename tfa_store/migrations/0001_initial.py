@@ -17,8 +17,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=50)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('created_at', models.DateTimeField(default=timezone.now)),
+                ('updated_at', models.DateTimeField(default=timezone.now)),
             ],
             options={
                 'verbose_name_plural': 'Categories',
@@ -29,8 +29,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('created_at', models.DateTimeField(default=timezone.now)),
+                ('updated_at', models.DateTimeField(default=timezone.now)),
             ],
             options={
                 'verbose_name_plural': 'Colors',
@@ -42,8 +42,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=50)),
                 ('price', models.IntegerField()),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('created_at', models.DateTimeField(default=timezone.now)),
+                ('updated_at',models.DateTimeField(default=timezone.now)),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tfa_store.Category')),
             ],
             options={
@@ -55,8 +55,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('stock_quantity', models.PositiveIntegerField(default=0)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('created_at', models.DateTimeField(default=timezone.now)),
+                ('updated_at', models.DateTimeField(default=timezone.now)),
                 ('color', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tfa_store.Color')),
                 ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tfa_store.Product')),
             ],
@@ -69,8 +69,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=50)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('created_at', models.DateTimeField(default=timezone.now)),
+                ('updated_at', models.DateTimeField(default=timezone.now)),
             ],
             options={
                 'verbose_name_plural': 'Sizes',
@@ -82,8 +82,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('description', models.TextField()),
                 ('image', models.ImageField(blank=True, null=True, upload_to='images/products/')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('created_at', models.DateTimeField(default=timezone.now)),
+                ('updated_at', models.DateTimeField(default=timezone.now)),
                 ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tfa_store.Product')),
                 ('product_size_color', models.ManyToManyField(to='tfa_store.ProductSizeNColor')),
             ],
