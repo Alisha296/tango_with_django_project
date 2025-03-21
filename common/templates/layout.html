@@ -1,50 +1,47 @@
-
-{% load static %}
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
+<html class=" sizes transferables cookies customelements eventlistener geolocation history json queryselector serviceworker no-xdomainrequest mutationobserver picture es5function strictmode es5undefined es6collections es6math promises beacon fetch xhrresponsetype localstorage svgfilters urlparser urlsearchparams websocketsbinary atobbtoa atob-btoa no-framed sharedworkers webworkers classlist documentfragment video webanimations multiplebgs template unknownelements no-capture formattribute no-seamless imgcrossorigin inputformaction input-formaction no-inputformtarget no-input-formtarget scriptdefer no-stylescoped inlinesvg textareamaxlength videocrossorigin videoloop videopreload no-ambientlight inputsearchevent canvas canvastext canvasblending cubicbezierrange opacity csspositionsticky audio csschunit supports hsla xhrresponsetypedocument svgclippaths svgforeignobject smil webgl blobconstructor blob-constructor typedarrays svgasimg datalistelem mathml no-touchevents unicode generatedcontent lastchild subpixelfont cssvhunit cssvwunit oninput no-batteryapi no-battery-api no-dart no-forcetouch pagevisibility pointerlock getrandomvalues no-requestautocomplete bloburls getusermedia peerconnection datachannel matchmedia appearance backgroundcliptext bgrepeatround bgrepeatspace borderimage boxsizing ellipsis cssfilters no-flexboxtweener cssreflections cssresize scrollsnappoints textalignlast csstransforms3d csstransitions webpanimation datauri videoautoplay blobworkers dataworkers indexeddb audiopreload indexeddb-deletedatabase"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <title>
-        {% block title %} {% endblock %}
+        The Fashion Atelier - Home
     
     </title>
-   
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
+    <meta name="description" content="The Fashion Atelier">
+    <meta name="keywords" content="Popular">
+    <meta name="author" content="The Fashion Atelier">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+ 
    <!-- Favicone Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/logo1.ico' %}">
-    <link rel="icon" type="img/png" href="{% static 'img/logo.jpg' %}">
-    <link rel="apple-touch-icon" href="{% static 'img/logo1.jpg' %}">
-    <!-- CSS -->
-    <link href="{% static 'css/plugins/bootstrap.css' %}" rel="stylesheet" type="text/css" />
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- fontawesome css -->
-    <link href="{% static 'css/plugins/animate.css' %}" rel="stylesheet" type="text/css" />
-    <!-- animate css -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+   {% load static %}
+   <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/logo1.jpg' %}">
+   <link rel="icon" type="image/png" href="{% static 'img/logo1.jpg' %}">
+   <link rel="apple-touch-icon" href="{% static 'img/logo1.jpg' %}">
+    <!-- Slider Revolution Css Setting -->
     
-    
+
 
 </head>
 <body>
+
+   
+    <!--Overlay-->
+    <div class="sidebar_overlay"></div>
+    <!-- End Sidebar Menu (Cart Menu) -------------------------------------------->
+
+    <!-- Search Overlay Menu ----------------------------------------------------->
     <section class="search-overlay-menu">
         <!-- Close Icon -->
         <a href="javascript:void(0)" class="search-overlay-close"></a>
         <!-- End Close Icon -->
         <div class="container">
-            <!-- Search Form -->
-            <form  action="{% url "search" %}" method="get">
+            <form action="{% url 'search' %}" method="get">
                 <div class="search-icon-lg">
-                    <img src="{% static 'img/search-icon-lg.png' %}" alt="" />
+                    <img src="{% static 'img/search-icon-lg.png' %}" alt="Search Icon">
                 </div>
                 <label class="h6 normal search-input-label" for="search-query">Enter keywords to Search Product</label>
-               
-                    <input type="text" name="search_box" placeholder="Search...">
+                <input type="text" name="search_box" placeholder="Search...">
                 <button type="submit">
-                    <img src="{% static "img/search-icon-lg.png" %}" alt="" />
+                    <img src="{% static 'img/search-icon-lg.png' %}" alt="Search Icon">
                 </button>
-             
             </form>
             <!-- End Search Form -->
 
@@ -57,66 +54,55 @@
     <!--==========================================-->
     <div class="wraper">
         <!-- Header -->
-        <header class="header">
+        <header class="header" style="height: 127px;">
             <!--Topbar-->
             <div class="header-topbar">
                 <div class="header-topbar-inner">
                     <!--Topbar Left-->
                     <div class="topbar-left hidden-sm-down">
-                        <div class="phone" style="color: #34b79d; font-weight: 400;">Welcome to StyleX</div>
+                        <div class="phone" style="color: #34b79d; font-weight: 400;">Welcome to The Fashion Atelier</div>
                     </div>
                     <!--End Topbar Left-->
 
-                    <!--Topbar Right-->
+                    <!-- Topbar Right -->
                     <div class="topbar-right">
-
-                        <ul class="list-none">
-                            {% if 'user' not in request.session %}
+                        <ul class="header-topbar-nav">
                             <li>
-                                <a href="{% url "login" %}"><i class="fa fa-lock left" aria-hidden="true"></i><span class="hidden-sm-down">Login</span></a>
+                                <a href="{% url 'login' %}"><i class="fa fa-lock left" aria-hidden="true"></i><span class="hidden-sm-down">Login</span></a>
                             </li>
-                            {% endif %}
-                            <li class="dropdown-nav">
-                                <a href=""><i class="fa fa-user left" aria-hidden="true"></i><span class="hidden-sm-down">{{ user.name }}</span><i class="fa fa-angle-down right" aria-hidden="true"></i></a>
-                                <!--Dropdown-->
-                                {% if 'user'  in request.session %}
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        
-                                        
-                                        <li class="dropdown-nav">
-                                            <a href="/order_history"><i class="fa fa-history" aria-hidden="true"></i><span class="hidden-sm-down">Order History</span></a>
-                                        </li>
-                                        
-                                        <li class="dropdown-nav">
-                                            <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i><span class="hidden-sm-down">Logout</span></a>
-                                        </li>
-                                        
-                                    </ul>   
-                                </div>
-                                {% endif %}
-
-                                <!--End Dropdown-->
+                            <!-- Currency -->
+                            <li>
+                                <span style="color: #34b79d; font-weight: 400;">GBP</span>
                             </li>
-                            <li class="dropdown-nav">
-                                <a href="#">
-                                    {% if request.session.currency %}
-                                
-                                    {{ request.session.currency }}
-                                    {% else %}
-                                    INR
-                                    {% endif %}
-                                    <i class="fa fa-angle-down right" aria-hidden="true"></i></a>
-                                <!--Dropdown-->
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li><a href="?currency=GBP">GBP</a></li>
-                                        
-                                    </ul>
-                                </div>
-                                <!--End Dropdown-->
+                            <!-- Home -->
+                            <li>
+                                <a href="{% url 'home' %}">Home</a>
                             </li>
-                          
+                            <!-- Men -->
+                            <li>
+                                <a href="{% url 'man' %}">Men</a>
+                            </li>
+                            <!-- Women -->
+                            <li>
+                                <a href="{% url 'woman' %}">Women</a>
+                            </li>
+                            <!-- Kids -->
+                            <li>
+                                <a href="{% url 'kids' %}">Kids</a>
+                            </li>
+                            <!-- Contact -->
+                            <li>
+                                <a href="{% url 'contact' %}">Contact</a>
+                            </li>
+                            <!-- Cart -->
+                            <li>
+                                <a href="{% url 'cart' %}">
+                                    <div class="cart-icon">
+                                        <i aria-hidden="true" class="fa fa-shopping-bag"></i>
+                                        <span class="countTip">0</span>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Topbar Right -->
@@ -128,11 +114,9 @@
             <div id="header-sticky" class="header-main">
                 <div class="header-main-inner">
                     <!-- Logo -->
-                    <div class="logo" style="text-align: center;">
-                        <a href="{% url "home" %}">
-                            
-                            
-                            <img src="{% static 'img/logo1.jpg' %}" alt="The Fashion Atelier" style="width: 1000px; height: 500px; ;"/>
+                    <div class="logo">
+                        <a href="{% url 'home' %}">
+                            <img src="{% static 'img/logo.jpg' %}" alt="The Fashion Atelier">
                         </a>
                     </div>
                     <!-- End Logo -->
@@ -141,7 +125,7 @@
                     <!-- Right Sidebar Nav -->
                     <div class="header-rightside-nav">
                         <!-- Login-Register Link -->
-                        {% comment %} <div class="header-btn-link hidden-lg-down"><a href="#" class="btn btn-sm btn-color">Buy Now</a></div> {% endcomment %}
+                        
                         <!-- End Login-Register Link -->
 
                         <!-- Sidebar Icon -->
@@ -150,17 +134,15 @@
                                 <!-- Search-->
                                 <li><a id="search-overlay-menu-btn"><i aria-hidden="true" class="fa fa-search"></i></a></li>
                                 <!-- Whishlist-->
-                                {% comment %} <li><a class="js_whishlist-btn"><i aria-hidden="true" class="fa fa-heart"></i><span class="countTip">10</span></a></li> {% endcomment %}
+                                
                                 <!-- Cart-->
-                                <li><a href="{% url "cart" %}">
+                                <li><a href="{% url 'cart' %}">
                                     <div class="cart-icon">
                                         <i aria-hidden="true" class="fa fa-shopping-bag"></i>
                                         <span class="countTip">
-                                            {% if total_items > 0 %}
-                                                {{ total_items }}
-                                            {% else %}
+                                            
                                                 0
-                                            {% endif %}
+                                            
                                         </span>
                                     </div>
                                 </a></li>
@@ -173,28 +155,25 @@
 
                     <!-- Navigation Menu -->
                     <nav class="navigation-menu">
-                        <ul>
+                        <a href="#" class="menu-mobile">Menu</a><ul>
                             <li>
-                                <a href="{% url "home" %}">Home</a>
+                                <a href="{% url 'home' %}">Home</a>
                             </li>
                             <li>
-                                <a href="/man/">Man</a>
+                                <a href="{% url 'men' %}">Men</a>
                             </li>
                             <li>
-                                <a href="/woman/">Women</a>
+                                <a href="{% url 'women' %}">Women</a>
                                
                             </li>
                             <li>
-                                <a href="/kids/">Kids</a>
+                                <a href="{% url 'Kids' %}">Kids</a>
                                
                             </li>
                         
-{% comment %} 
+
                             <li>
-                                <a href="/about">About</a>
-                            </li> {% endcomment %}
-                            <li>
-                                <a href="/contact">Contact</a>
+                                <a href="{% url 'contact' %}">Contact</a>
                             </li>
                         </ul>
                     </nav>
@@ -206,139 +185,954 @@
         </header>
         <!-- End Header -->
 
-        {% block body %} {% endblock %}
-
-        <footer class="footer section-padding">
-            <!-- Footer Info -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-12 col-sm-12 mb-sm-45">
-                        <div class="footer-block about-us-block">
-                            <img src="{% static "img/logo1.jpg" %}" width="125" alt="">
-                            <p>
-                                Elevate your style with Styelx: Where fashion meets innovation. Shop the latest trends effortlessly!
-                            </p>
-                            <ul class="footer-social-icon list-none-ib">
-                                <li><a href="" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-12 col-sm-12 mb-sm-45">
-                        <div class="footer-block information-block">
-                            <h6>Information</h6>
-                            <ul>
-                                <li><a href="/men/">MEN</a></li>
-                                <li><a href="/women/">WOMEN</a></li>
-                                <li><a href="/kids/">KIDS</a></li>
-                                {% comment %} <li><a href="/about">About Us</a></li> {% endcomment %}
-                                <li><a href="/contact">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
+        
+    
+<div class="wraper">
+<div class="page-content-wraper">
+    <!-- Intro -->
+    <section id="intro" class="intro">
+        <!-- Revolution Slider -->
+        <div class="forcefullwidth_wrapper_tp_banner" id="rev_slider_1078_1_forcefullwidth" style="position:relative;width:100%;height:auto;margin-top:0px;margin-bottom:0px"><div id="rev_slider_1078_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-source="gallery" style="background-color: transparent; padding: 0px; margin-top: 0px; margin-bottom: 0px; position: absolute; overflow: visible; height: 600px; width: 1425px; left: 0px;">
+            <!-- START REVOLUTION SLIDER 5.3.0.2 fullwidth mode -->
+            <div id="rev_slider_1078_1" class="rev_slider fullwidthabanner revslider-initialised tp-simpleresponsive" style="max-height: 600px; margin-top: 0px; margin-bottom: 0px; height: 600px;" data-version="5.3.0.2" data-slideactive="rs-3">
+                <ul class="tp-revslider-mainul" style="visibility: visible; display: block; overflow: hidden; width: 100%; height: 100%; max-height: none;">
                     
-                   
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="footer-block contact-block">
-                            <h6>Contact</h6>
-                            <ul>
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>The Fashion Atelier
-                                    <br>
-                                    Glasgow, UK</li>
-                                    
-                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@tfa.com">md.tach18@gmail.com</a></li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>+91 0001328777</li>
-                              
-                            </ul>
+                 <li data-index="rs-2" data-transition="random" data-slotamount="7" data-masterspeed="500" data-thumb="" data-saveperformance="off" data-title="02" class="tp-revslider-slidesli" style="width: 100%; height: 100%; overflow: hidden; z-index: 18; visibility: hidden; opacity: 0; background-color: rgba(255, 255, 255, 0);">
+                        <!-- Main Image Layer 0-->
+                        <div class="slotholder" style="position: absolute; top: 0px; left: 0px; z-index: 0; width: 100%; height: 100%; visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><!--Runtime Modification - Img tag is Still Available for SEO Goals in Source - <img src="static/img/slide-img/slide_bg2.jpg" alt="h" title="home-1-slide-1" width="1920" height="1100" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="6" class="rev-slidebg defaultimg" data-no-retina="">--><div class="tp-bgimg defaultimg " style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url(&quot;static/img/slide-img/slide_bg2.jpg&quot;); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 0; visibility: hidden; z-index: 20;" src="static/img/slide-img/slide_bg2.jpg"></div></div>
+                        <!-- LAYERS -->
+
+                        <!--Layer 1-->
+                        <div class="tp-parallax-wrap" style="position: absolute; display: block; visibility: hidden; left: 243px; top: 140px; z-index: 1;"><div class="tp-loop-wrap" style="position:absolute;display:block;;"><div class="tp-mask-wrap" style="position: absolute; display: block; overflow: visible;"><h1 class="tp-caption NotGeneric-Title tp-resizeme" style="letter-spacing: 0px; line-height: 60px; visibility: inherit; transition: none; text-align: inherit; border-width: 0px; margin: 0px; padding: 0px; font-weight: 600; font-size: 51px; white-space: nowrap; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;" data-x="150" data-y="center" data-hoffset="" data-voffset="-100" data-transform_idle="o:1;" data-width="[&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;]" data-height="[&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;]" data-transform_in="y:50px;opacity:0;s:700;e:Power3.easeOut;" data-transform_out="s:500;e:Power3.easeInOut;s:500;e:Power3.easeInOut;" data-start="500" data-speed="500" data-endspeed="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" id="layer-246114246">New Look<br>
+                            Fashion 2024
+                            </h1></div></div></div>
+                                <!--Layer 2-->
+                    <div class="tp-parallax-wrap" style="position: absolute; display: block; visibility: hidden; left: 243px; top: 288px; z-index: 1;"><div class="tp-loop-wrap" style="position:absolute;display:block;;"><div class="tp-mask-wrap" style="position: absolute; display: block; overflow: visible;"><h3 class="tp-caption NotGeneric-Title tp-resizeme h3 normal text-center" style="letter-spacing: 0px; visibility: inherit; transition: none; text-align: inherit; line-height: 24px; border-width: 0px; margin: 0px; padding: 0px; font-weight: 400; font-size: 20px; white-space: nowrap; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;" data-x="150" data-y="center" data-hoffset="" data-voffset="0" data-transform_idle="o:1;" data-width="[&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;]" data-height="[&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;]" data-transform_in="y:50px;opacity:0;s:700;e:Power3.easeOut;" data-transform_out="s:500;e:Power3.easeInOut;s:500;e:Power3.easeInOut;" data-start="800" data-speed="500" data-endspeed="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" id="layer-991974947">What's Tranding Fashion?
+                    </h3></div></div></div>
+
+
+
+                        <!--Layer 3-->
+                        <div class="tp-parallax-wrap" style="position: absolute; display: block; visibility: hidden; left: 243px; top: 353px; z-index: 1;"><div class="tp-loop-wrap" style="position:absolute;display:block;;"><div class="tp-mask-wrap" style="position: absolute; display: block; overflow: visible;"><a class="tp-caption NotGeneric-Title tp-resizeme btn btn-md btn-color" data-x="150" data-y="center" data-hoffset="" data-voffset="75" data-transform_idle="o:1;" data-width="[&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;]" data-height="[&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;]" data-transform_in="y:50px;opacity:0;s:700;e:Power3.easeOut;" data-transform_out="s:500;e:Power3.easeInOut;s:500;e:Power3.easeInOut;" data-start="1100" data-speed="500" data-endspeed="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" id="layer-763844371" style="visibility: inherit; transition: none; text-align: inherit; line-height: 12px; border-width: 1px; margin: 0px; padding: 15px 35px; letter-spacing: 0px; font-weight: 400; font-size: 12px; white-space: nowrap; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;">See More
+                        </a></div></div></div>
+                    </li> 
+                    <li data-index="rs-3" data-transition="random" data-slotamount="7" data-masterspeed="500" data-thumb="" data-saveperformance="off" data-title="03" class="tp-revslider-slidesli active-revslide" style="width: 100%; height: 100%; overflow: hidden; z-index: 20; visibility: inherit; opacity: 1; background-color: rgba(255, 255, 255, 0);">
+                        <!-- Main Image Layer 0-->
+                        <div class="slotholder" style="position: absolute; top: 0px; left: 0px; z-index: 0; width: 100%; height: 100%; visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><!--Runtime Modification - Img tag is Still Available for SEO Goals in Source - <img src="static/img/slide-img/slide_bg3.jpg" alt="h" title="home-1-slide-1" width="1920" height="1100" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="6" class="rev-slidebg defaultimg" data-no-retina="">--><div class="tp-bgimg defaultimg " style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url(&quot;static/img/slide-img/slide_bg3.jpg&quot;); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit; z-index: 20;" src="static/img/slide-img/slide_bg3.jpg"></div></div>
+                        <!-- LAYERS -->
+
+                        <!--Layer 1-->
+                        <div class="tp-parallax-wrap" style="position: absolute; display: block; visibility: visible; left: 372px; top: 176px; z-index: 1;"><div class="tp-loop-wrap" style="position:absolute;display:block;;"><div class="tp-mask-wrap" style="position: absolute; display: block; overflow: visible;"><div class="tp-caption NotGeneric-Title tp-resizeme" style="letter-spacing: 0px; line-height: 0px; visibility: inherit; transition: none; text-align: inherit; border-width: 0px; margin: 0px; padding: 0px; font-weight: 400; font-size: 14px; white-space: nowrap; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;" data-x="center" data-y="center" data-hoffset="" data-voffset="-65" data-transform_idle="o:1;" data-width="[&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;]" data-height="[&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;]" data-transform_in="y:50px;opacity:0;s:700;e:Power3.easeOut;" data-transform_out="s:500;e:Power3.easeInOut;s:500;e:Power3.easeInOut;" data-start="500" data-speed="500" data-endspeed="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" id="layer-526015606">
+                            <img src="{% static 'img/slide-img/Picture1.jpg' %}" alt="" style="width: 682px; max-width: 682px; height: 117px; transition: none; text-align: inherit; line-height: 0px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 14px;">
+                        </div></div></div></div>
+
+                        
+                        <!--Layer 2-->
+                        <div class="tp-parallax-wrap" style="position: absolute; display: block; visibility: visible; left: 644px; top: 343px; z-index: 1;"><div class="tp-loop-wrap" style="position:absolute;display:block;;"><div class="tp-mask-wrap" style="position: absolute; display: block; overflow: visible;"><a class="tp-caption NotGeneric-Title tp-resizeme btn btn-md btn-black" data-x="center" data-y="center" data-hoffset="" data-voffset="65" data-transform_idle="o:1;" data-width="[&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;]" data-height="[&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;,&#39;auto&#39;]" data-transform_in="y:50px;opacity:0;s:700;e:Power3.easeOut;" data-transform_out="s:500;e:Power3.easeInOut;s:500;e:Power3.easeInOut;" data-start="900" data-speed="500" data-endspeed="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" id="layer-902083115" style="visibility: inherit; transition: none; text-align: inherit; line-height: 12px; border-width: 1px; margin: 0px; padding: 15px 35px; letter-spacing: 0px; font-weight: 400; font-size: 12px; white-space: nowrap; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;">See More
+                        </a></div></div></div>
+                    </li> 
+                </ul>
+            <div class="tp-loader spinner0" style="display: none;"><div class="dot1"></div><div class="dot2"></div><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div><div class="tp-bannertimer" style="visibility: visible; width: 39.72%; transform: translate3d(0px, 0px, 0px);"></div><div class="tp-leftarrow tparrows zeus" style="top: 50%; transform: matrix(1, 0, 0, 1, 20, -30); left: 0px;"></div><div class="tp-rightarrow tparrows zeus" style="top: 50%; transform: matrix(1, 0, 0, 1, -80, -30); left: 100%;"></div><div class="tp-bullets metis horizontal nav-pos-hor-center nav-pos-ver-bottom nav-dir-horizontal tp-forcenotvisible" style="width: 40px; height: 15px; top: 100%; transform: matrix(1, 0, 0, 1, -20, -35); left: 50%;"><div class="tp-bullet" style="left: 0px; top: 0px;"></div><div class="tp-bullet selected" style="left: 25px; top: 0px;"></div></div></div>
+        </div><div class="tp-fullwidth-forcer" style="width: 100%; height: 600px;"></div></div>
+
+        <!-- End Revolution Slider -->
+    </section>
+    <!-- End Intro -->
+
+  
+
+
+<!-- New Product -->
+<section class="section-padding">
+    <div class="container">
+        <h2 class="page-title">New Product</h2>
+    </div>
+    <div class="container">
+        <div id="new-product" class="product-item-4 owl-carousel owl-theme nf-carousel-theme1">
+            <!-- Men Products -->
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 1 %}">
+                            <img src="{% static 'img/man1.jpg' %}" alt="Men Solid Round Neck Cotton Blend T-Shirt">
+                        </a>
+                    </div>
+                    <style>
+                        .sectionimg {
+                            height: 255px !important;
+                            width: 255px !important;
+                        }
+                    </style>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 1 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'men_category' %}">MEN</a>
+                    <p class="product-title"><a href="{% url 'show_product' 1 %}">Men Solid Round Neck Cotton Blend T-Shirt</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 1 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Men Solid Round Neck Cotton Blend T-Shirt</p>
+                    <h5 class="item-price">£ 25.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 2 %}">
+                            <img src="{% static 'img/man2.png' %}" alt="Men Solid Polo Neck Cotton Blend T-Shirt">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 2 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'men_category' %}">MEN</a>
+                    <p class="product-title"><a href="{% url 'show_product' 2 %}">Men Solid Polo Neck Cotton Blend T-Shirt</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 2 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Men Solid Polo Neck Cotton Blend T-Shirt</p>
+                    <h5 class="item-price">£ 30.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 3 %}">
+                            <img src="{% static 'img/man3.jpg' %}" alt="Formal Shirt">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 3 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'men_category' %}">MEN</a>
+                    <p class="product-title"><a href="{% url 'show_product' 3 %}">Formal Shirt</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 3 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Formal Shirt</p>
+                    <h5 class="item-price">£ 40.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 4 %}">
+                            <img src="{% static 'img/man4.jpg' %}" alt="Men Striped Casual Shirt">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 4 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'men_category' %}">MEN</a>
+                    <p class="product-title"><a href="{% url 'show_product' 4 %}">Men Striped Casual Shirt</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 4 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Men Striped Casual Shirt</p>
+                    <h5 class="item-price">£ 35.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 5 %}">
+                            <img src="{% static 'img/man5.jpg' %}" alt="Men Slim Fit Jeans">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 5 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'men_category' %}">MEN</a>
+                    <p class="product-title"><a href="{% url 'show_product' 5 %}">Men Slim Fit Jeans</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 5 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Men Slim Fit Jeans</p>
+                    <h5 class="item-price">£ 50.00</h5>
+                </div>
+            </div>
+            <!-- Women Products -->
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 6 %}">
+                            <img src="{% static 'img/women1.png' %}" alt="Women Printed Viscose Rayon Ethnic Dress">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 6 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'category_page' 'women' %}">WOMEN</a>
+                    <p class="product-title"><a href="{% url 'show_product' 6 %}">Women Printed Viscose Rayon Ethnic Dress</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 6 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Women Printed Viscose Rayon Ethnic Dress</p>
+                    <h5 class="item-price">£ 60.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 7 %}">
+                            <img src="{% static 'img/women2.jpg' %}" alt="Women Printed Pure Cotton Straight Kurta">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 7 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'category_page' 'women' %}">WOMEN</a>
+                    <p class="product-title"><a href="{% url 'show_product' 7 %}">Women Printed Pure Cotton Straight Kurta</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 7 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Women Printed Pure Cotton Straight Kurta</p>
+                    <h5 class="item-price">£ 45.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 8 %}">
+                            <img src="{% static 'img/women3.png' %}" alt="Women Geometric Print Cotton Rayon Straight Kurta">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 8 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'category_page' 'women' %}">WOMEN</a>
+                    <p class="product-title"><a href="{% url 'show_product' 8 %}">Women Geometric Print Cotton Rayon Straight Kurta</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 8 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Women Geometric Print Cotton Rayon Straight Kurta</p>
+                    <h5 class="item-price">£ 50.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 9 %}">
+                            <img src="{% static 'img/women4.jpg' %}" alt="Women Floral Midi Dress">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 9 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'category_page' 'women' %}">WOMEN</a>
+                    <p class="product-title"><a href="{% url 'show_product' 9 %}">Women Floral Midi Dress</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 9 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Women Floral Midi Dress</p>
+                    <h5 class="item-price">£ 55.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 10 %}">
+                            <img src="{% static 'img/women5.jpg' %}" alt="Women Embroidered Silk Saree">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 10 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'category_page' 'women' %}">WOMEN</a>
+                    <p class="product-title"><a href="{% url 'show_product' 10 %}">Women Embroidered Silk Saree</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 10 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Women Embroidered Silk Saree</p>
+                    <h5 class="item-price">£ 120.00</h5>
+                </div>
+            </div>
+            <!-- Kids Products -->
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 11 %}">
+                            <img src="{% static 'img/kids1.jpg' %}" alt="Girls Printed Cotton Blend T Shirt">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 11 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'category_page' 'kids' %}">KIDS</a>
+                    <p class="product-title"><a href="{% url 'show_product' 11 %}">Girls Printed Cotton Blend T Shirt</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 11 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Girls Printed Cotton Blend T Shirt</p>
+                    <h5 class="item-price">£ 15.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 12 %}">
+                            <img src="{% static 'img/kids2.jpg' %}" alt="Boys Colorblock Cotton Blend T Shirt">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 12 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'category_page' 'kids' %}">KIDS</a>
+                    <p class="product-title"><a href="{% url 'show_product' 12 %}">Boys Colorblock Cotton Blend T Shirt</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 12 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Boys Colorblock Cotton Blend T Shirt</p>
+                    <h5 class="item-price">£ 18.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 13 %}">
+                            <img src="{% static 'img/kids3.jpg' %}" alt="Boys Striped Pure Cotton T Shirt">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 13 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'category_page' 'kids' %}">KIDS</a>
+                    <p class="product-title"><a href="{% url 'show_product' 13 %}">Boys Striped Pure Cotton T Shirt</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 13 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Boys Striped Pure Cotton T Shirt</p>
+                    <h5 class="item-price">£ 20.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 14 %}">
+                            <img src="{% static 'img/kids4.jpg' %}" alt="Girls Floral Frock">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 14 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'category_page' 'kids' %}">KIDS</a>
+                    <p class="product-title"><a href="{% url 'show_product' 14 %}">Girls Floral Frock</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 14 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Girls Floral Frock</p>
+                    <h5 class="item-price">£ 25.00</h5>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-inner">
+                    <div class="product-img-wrap sectionimg">
+                        <a href="{% url 'show_product' 15 %}">
+                            <img src="{% static 'img/kids5.jpg' %}" alt="Boys Denim Jacket">
+                        </a>
+                    </div>
+                    <div class="product-button">
+                        <a href="{% url 'show_product' 15 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <a class="tag" href="{% url 'category_page' 'kids' %}">KIDS</a>
+                    <p class="product-title"><a href="{% url 'show_product' 15 %}">Boys Denim Jacket</a></p>
+                    <div class="product-rating">
+                        <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                            <span style="width: 60%"></span>
+                        </div>
+                        <a href="{% url 'show_product' 15 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                    </div>
+                    <p class="product-description">Boys Denim Jacket</p>
+                    <h5 class="item-price">£ 35.00</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End New Product -->
+
+    <!-- Categories -->
+    <section class="">
+        <div class="section-padding container-fluid bg-image text-center overlay-light90" data-background-img="{% static 'img/bg/bg_5.jpg' %}" data-bg-position-x="center center" style="background-image: url('{% static "img/bg/bg_5.jpg" %}'); background-position: center center;">
+            <div class="container">
+                <h2 class="page-title">Shop by Categories</h2>
+            </div>
+        </div>
+        <div class="container container-margin-minus-t">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="categories-box">
+                        <div class="categories-image-wrap">
+                            <img src="{% static 'img/category/man4.jpg' %}" alt="Men">
+                        </div>
+                        <div class="categories-content">
+                            <a href="{% url 'category' 'men' %}">
+                                <div class="categories-caption">
+                                    <h6 class="normal">Men</h6>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="footer-block contact-block">
-                           
-                            <div class="four col-md-3">
-                                <div class="counter-box">
-                                    <i class="fa fa-group ls" ></i>
-                                    <span class="counter">{{visitor}}</span>
-                                   
+                </div>
+                <div class="col-md-4">
+                    <div class="categories-box">
+                        <div class="categories-image-wrap">
+                            <img src="{% static 'img/category/women3.png' %}" alt="Women">
+                        </div>
+                        <div class="categories-content">
+                            <a href="{% url 'category' 'women' %}">
+                                <div class="categories-caption">
+                                    <h6 class="normal">Women</h6>
                                 </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="categories-box">
+                        <div class="categories-image-wrap">
+                            <img src="{% static 'img/category/kids3.jpg' %}" alt="Kids">
+                        </div>
+                        <div class="categories-content">
+                            <a href="{% url 'category' 'kids' %}">
+                                <div class="categories-caption">
+                                    <h6 class="normal">Kids</h6>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Categories -->
+
+    <!-- New Trending -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="page-title">New Trending</h2>
+        </div>
+        <div class="container">
+            <div id="new-trending" class="product-item-4 owl-carousel owl-theme nf-carousel-theme1">
+                <!-- Men Products -->
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 1 %}">
+                                <img src="{% static 'img/man1.jpg' %}" alt="Men Solid Round Neck Cotton Blend T-Shirt">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 1 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'men_category' %}">MEN</a>
+                        <p class="product-title"><a href="{% url 'show_product' 1 %}">Men Solid Round Neck Cotton Blend T-Shirt</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 1 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Men Solid Round Neck Cotton Blend T-Shirt</p>
+                        <h5 class="item-price">£ 25.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 2 %}">
+                                <img src="{% static 'img/man2.png' %}" alt="Men Solid Polo Neck Cotton Blend T-Shirt">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 2 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'men_category' %}">MEN</a>
+                        <p class="product-title"><a href="{% url 'show_product' 2 %}">Men Solid Polo Neck Cotton Blend T-Shirt</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 2 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Men Solid Polo Neck Cotton Blend T-Shirt</p>
+                        <h5 class="item-price">£ 30.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 3 %}">
+                                <img src="{% static 'img/man3.jpg' %}" alt="Formal Shirt">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 3 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'men_category' %}">MEN</a>
+                        <p class="product-title"><a href="{% url 'show_product' 3 %}">Formal Shirt</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 3 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Formal Shirt</p>
+                        <h5 class="item-price">£ 40.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 4 %}">
+                                <img src="{% static 'img/man4.jpg' %}" alt="Men Striped Casual Shirt">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 4 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'men_category' %}">MEN</a>
+                        <p class="product-title"><a href="{% url 'show_product' 4 %}">Men Striped Casual Shirt</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 4 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Men Striped Casual Shirt</p>
+                        <h5 class="item-price">£ 35.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 5 %}">
+                                <img src="{% static 'img/man5.jpg' %}" alt="Men Slim Fit Jeans">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 5 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'men_category' %}">MEN</a>
+                        <p class="product-title"><a href="{% url 'show_product' 5 %}">Men Slim Fit Jeans</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 5 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Men Slim Fit Jeans</p>
+                        <h5 class="item-price">£ 50.00</h5>
+                    </div>
+                </div>
+                <!-- Women Products -->
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 6 %}">
+                                <img src="{% static 'img/women1.png' %}" alt="Women Printed Viscose Rayon Ethnic Dress">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 6 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'category_page' 'women' %}">WOMEN</a>
+                        <p class="product-title"><a href="{% url 'show_product' 6 %}">Women Printed Viscose Rayon Ethnic Dress</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 6 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Women Printed Viscose Rayon Ethnic Dress</p>
+                        <h5 class="item-price">£ 60.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 7 %}">
+                                <img src="{% static 'img/women2.jpg' %}" alt="Women Printed Pure Cotton Straight Kurta">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 7 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'category_page' 'women' %}">WOMEN</a>
+                        <p class="product-title"><a href="{% url 'show_product' 7 %}">Women Printed Pure Cotton Straight Kurta</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 7 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Women Printed Pure Cotton Straight Kurta</p>
+                        <h5 class="item-price">£ 45.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 8 %}">
+                                <img src="{% static 'img/women3.png' %}" alt="Women Geometric Print Cotton Rayon Straight Kurta">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 8 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'category_page' 'women' %}">WOMEN</a>
+                        <p class="product-title"><a href="{% url 'show_product' 8 %}">Women Geometric Print Cotton Rayon Straight Kurta</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 8 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Women Geometric Print Cotton Rayon Straight Kurta</p>
+                        <h5 class="item-price">£ 50.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 9 %}">
+                                <img src="{% static 'img/women4.jpg' %}" alt="Women Floral Midi Dress">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 9 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'category_page' 'women' %}">WOMEN</a>
+                        <p class="product-title"><a href="{% url 'show_product' 9 %}">Women Floral Midi Dress</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 9 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Women Floral Midi Dress</p>
+                        <h5 class="item-price">£ 55.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 10 %}">
+                                <img src="{% static 'img/women5.jpg' %}" alt="Women Embroidered Silk Saree">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 10 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'category_page' 'women' %}">WOMEN</a>
+                        <p class="product-title"><a href="{% url 'show_product' 10 %}">Women Embroidered Silk Saree</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 10 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Women Embroidered Silk Saree</p>
+                        <h5 class="item-price">£ 120.00</h5>
+                    </div>
+                </div>
+                <!-- Kids Products -->
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 11 %}">
+                                <img src="{% static 'img/kids1.jpg' %}" alt="Girls Printed Cotton Blend T Shirt">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 11 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'category_page' 'kids' %}">KIDS</a>
+                        <p class="product-title"><a href="{% url 'show_product' 11 %}">Girls Printed Cotton Blend T Shirt</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 11 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Girls Printed Cotton Blend T Shirt</p>
+                        <h5 class="item-price">£ 15.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 12 %}">
+                                <img src="{% static 'img/kids2.jpg' %}" alt="Boys Colorblock Cotton Blend T Shirt">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 12 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'category_page' 'kids' %}">KIDS</a>
+                        <p class="product-title"><a href="{% url 'show_product' 12 %}">Boys Colorblock Cotton Blend T Shirt</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 12 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Boys Colorblock Cotton Blend T Shirt</p>
+                        <h5 class="item-price">£ 18.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 13 %}">
+                                <img src="{% static 'img/kids3.jpg' %}" alt="Boys Striped Pure Cotton T Shirt">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 13 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'category_page' 'kids' %}">KIDS</a>
+                        <p class="product-title"><a href="{% url 'show_product' 13 %}">Boys Striped Pure Cotton T Shirt</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 13 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Boys Striped Pure Cotton T Shirt</p>
+                        <h5 class="item-price">£ 20.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 14 %}">
+                                <img src="{% static 'img/kids4.jpg' %}" alt="Girls Floral Frock">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 14 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'category_page' 'kids' %}">KIDS</a>
+                        <p class="product-title"><a href="{% url 'show_product' 14 %}">Girls Floral Frock</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 14 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Girls Floral Frock</p>
+                        <h5 class="item-price">£ 25.00</h5>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-inner">
+                        <div class="product-img-wrap sectionimg">
+                            <a href="{% url 'show_product' 15 %}">
+                                <img src="{% static 'img/kids5.jpg' %}" alt="Boys Denim Jacket">
+                            </a>
+                        </div>
+                        <div class="product-button">
+                            <a href="{% url 'show_product' 15 %}" class="js_tooltip" data-mode="top" data-tip="Show Product"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a class="tag" href="{% url 'category_page' 'kids' %}">KIDS</a>
+                        <p class="product-title"><a href="{% url 'show_product' 15 %}">Boys Denim Jacket</a></p>
+                        <div class="product-rating">
+                            <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 3 out of 5">
+                                <span style="width: 60%"></span>
+                            </div>
+                            <a href="{% url 'show_product' 15 %}#reviews" class="product-rating-count"><span class="count">3</span> Reviews</a>
+                        </div>
+                        <p class="product-description">Boys Denim Jacket</p>
+                        <h5 class="item-price">£ 35.00</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End New Trending -->
+
+
+</div>
+</div>
+
+
+        <!-- Footer -->
+    <footer class="footer section-padding">
+        <!-- Footer Info -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 col-sm-12 mb-sm-45">
+                    <div class="footer-block about-us-block">
+                        <img src="{% static 'img/logo.jpg' %}" width="125" alt="The Fashion Atelier">
+                        <p>Elevate your style with The Fashion Atelier: Where fashion meets innovation. Shop the latest trends effortlessly!</p>
+                        <ul class="footer-social-icon list-none-ib">
+                            <li><a href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12 mb-sm-45">
+                    <div class="footer-block information-block">
+                        <h6>Information</h6>
+                        <ul>
+                            <li><a href="{% url 'man' %}">MEN</a></li>
+                            <li><a href="{% url 'woman' %}">WOMEN</a></li>
+                            <li><a href="{% url 'kids' %}">KIDS</a></li>
+                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                    <div class="footer-block contact-block">
+                        <h6>Contact</h6>
+                        <ul>
+                            <li><i class="fa fa-map-marker" aria-hidden="true"></i>The Fashion Atelier, Glasgow, UK</li>
+                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:support@thefashionatelier.com">support@thefashionatelier.com</a></li>
+                            <li><i class="fa fa-phone" aria-hidden="true"></i>+44 123 456 7890</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                    <div class="footer-block contact-block">
+                        <div class="four col-md-3">
+                            <div class="counter-box">
+                                <i class="fa fa-group ls"></i>
+                                <span class="counter">1643</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- End Footer Info -->
-
-        <style>
-            .counter-box {
-                display: block;
-             
-                text-align: center
-                
-            }
-            .ls{ 
-                padding-left: 30px;
-                color: #34b79d !important;
-            }
-            
-            .counter-box p {
-                margin: 5px 0 0;
-                padding: 0;
-                color: #acacac;
-                font-size: 18px;
-                font-weight: 500
-            }
-            
-            .counter-box i {
-                font-size: 60px;
-                margin: 0 0 15px;
-               
-            }
-            
-            .counter { 
-                display: block;
-                font-size: 32px;
-                font-weight: 700;
-                padding-left: 40px;
-                color: #acacac;
-                line-height: 28px
-            }
-            
-         
-        </style>
-
-            
-
-    </div>
+        </div>
+        <!-- End Footer Info -->
     <!-- End wrapper =============================-->
 
     <!--==========================================-->
     <!-- JAVASCRIPT -->
     <!--==========================================-->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'js/jquery.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'js/plugins/jquery-ui.js'%}"></script>
-    <!-- jquery library js -->
-    <script type="text/javascript" src="{% static 'js/plugins/modernizr.js' %}"></script>
-    <!--modernizr Js-->
-    <script type="text/javascript" src="{% static 'js/plugins/tether.min.js'%}"></script>
-    <!--Bootstrap tooltips require Tether (Tether Js)-->
-    <script type="text/javascript" src="{% static 'js/plugins/bootstrap.min.js'%}"></script>
-    <!-- bootstrap js -->
-    <script type="text/javascript" src="{% static 'js/plugins/owl.carousel.js'%}"></script>
-    <!-- OWL carousel js -->
-    <script type="text/javascript" src="{% static 'js/plugins/slick.js'%}"></script>
-    <!-- Slick Slider js -->
-    <script type="text/javascript" src="{% static 'js/plugins/plugins-all.js'%}"></script>
-    <!-- Plugins All js -->
-    <script type="text/javascript" src="{% static 'js/custom.js'%}"></script>
-    
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-ui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/modernizr.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.themepunch.revolution.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.themepunch.tools.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/revolution.extension.navigation.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/revolution.extension.parallax.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/revolution.extension.slideanims.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/revolution.extension.layeranimation.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/tether.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/owl.carousel.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slick.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins-all.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
     <!-- custom js -->
     <!-- end jquery -->
 
-
-
-
-</body>
-</html>
