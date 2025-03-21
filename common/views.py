@@ -151,7 +151,7 @@ def about(request):
 
 """
 Product Section 
-Three section MEN, WOMEN and KIDS
+Three section MAN, WOMAN and KIDS
 according cate name display product
 
 
