@@ -151,7 +151,7 @@ def about(request):
 
 """
 Product Section 
-Three section MAN, WOMAN and KIDS
+Three section MEN, WOMEN and KIDS
 according cate name display product
 
 
@@ -182,7 +182,7 @@ def section(request, cate):
                    **user_info,
                    'product_length':product_length
                    }
-    return render(request, 'man.html', context)
+    return render(request, 'men.html', context)
 
 
 
