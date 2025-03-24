@@ -55,3 +55,26 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name} in Order {self.order.id}"
+
+# fashion/views.py
+@login_required
+def checkout(request):
+    cart = get_user_cart(request)
+    total = 0
+    if cart:
+        for item in cart.items.all():
+            total += float(item.product.price) * item.quantity
+
+    if request.method == 'POST':
+        order = Order.objects.create(user=request.user, total=total, status='Pending')
+        for item in cart.items.all():
+            OrderItem.objects.create(
+                order=order,
+                product=item.product,
+                quantity=item.quantity,
+                price=item.product.price
+            )
+        cart.items.all().delete()
+        return redirect('order-confirmation', order_id=order.id)  # Ensure this matches the URL name
+
+    return render(request, 'fashion/checkout.html', {'cart': cart, 'total': total})
