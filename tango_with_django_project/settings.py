@@ -145,6 +145,7 @@ EMAIL_HOST_PASSWORD = 'your-app-password'  # Use an App Password if using Gmail
 DEFAULT_FROM_EMAIL = 'your-email@gmail.com'
 
 
+# tango_with_django_project/settings.py
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -152,12 +153,13 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
         'OPTIONS': {
-            'min_length': 6,
+            'min_length': 6,  # Reduce minimum length to 6 for development
+        },
     },
-    #{
-     #   'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    #},
-    #{
-     #   'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    #},
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
