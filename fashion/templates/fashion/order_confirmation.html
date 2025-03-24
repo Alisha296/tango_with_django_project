@@ -6,7 +6,8 @@
   <p>Thank you for your order, {{ order.user.username }}!</p>
   <p>Order ID: {{ order.id }}</p>
   <p>Shipping Address: {{ order.shipping_address }}</p>
-  <p>Total: ${{ order.total }}</p>
+  <p>Total: £{{ order.total }}</p>
+  <p>Status: {{ order.status }}</p>
   <h3>Items:</h3>
   <ul>
     {% for item in order.items.all %}
