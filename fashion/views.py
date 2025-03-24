@@ -51,16 +51,25 @@ def register(request):
 def profile(request):
     return render(request, 'fashion/profile.html', {'user': request.user})
 
-# fashion/views.py
 def login_view(request):
     print(f"Request method: {request.method}")
     if request.method == 'POST':
         print("POST data:", request.POST)
-        return redirect('home')  # Temporarily redirect without authentication
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        print(f"User authenticated: {user}")
+        if user is not None:
+            login(request, user)
+            print(f"Session ID after login: {request.session.session_key}")
+            return redirect('home')
+        else:
+            print("Authentication failed")
+            return render(request, 'registration/login.html', {'error': 'Invalid username or password'})
     else:
         print("Rendering login page (GET request)")
     return render(request, 'registration/login.html')
-
+    
 @login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
