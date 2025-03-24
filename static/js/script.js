@@ -61,7 +61,15 @@ function removeFromCart(productId) {
 // Search functionality (mock)
 document.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault();
-    const query = document.getElementById('search-input').value.toLowerCase();
+    // static/js/script.js
+document.addEventListener('DOMContentLoaded', function() {
+    const someElement = document.getElementById('some-id');
+    if (someElement) {
+        console.log(someElement.value); // Only access .value if someElement exists
+    } else {
+        console.log("Element with ID 'some-id' not found on this page.");
+    }
+});
     const results = [
         { id: 1, name: "Men's Casual Shirt", price: 35.00 },
         { id: 2, name: "Women's Floral Dress", price: 50.00 },
@@ -87,9 +95,18 @@ document.querySelector('form').addEventListener('submit', function(e) {
 });
 
 // Initialize cart on page load
+// static/js/script.js
 document.addEventListener('DOMContentLoaded', function() {
-    updateCartCount();
-    if (window.location.pathname.includes('/cart/')) {
-        displayCart();
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            // Remove event.preventDefault() to allow form submission
+            const someInput = document.getElementById('some-input');
+            if (someInput) {
+                console.log(someInput.value);
+            } else {
+                console.log("Input not found, but form can still submit.");
+            }
+        });
     }
 });
