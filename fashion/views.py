@@ -24,6 +24,7 @@ def kids(request):
     return render(request, 'fashion/kids.html')
 
 def product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
     return render(request, 'fashion/product.html', {'product_id': product_id})
 
 @login_required
