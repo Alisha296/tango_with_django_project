@@ -54,7 +54,7 @@ footer a:hover {
 }
 
 .logo {
-    height: auto; 
-    width: 250px; 
+    height: 500px; 
+    width: 500px; 
     object-fit: contain;
 }
