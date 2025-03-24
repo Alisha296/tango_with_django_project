@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^profile/',views.profile, name='profile'),
     url(r'^reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
     url(r'^checkout/', views.checkout, name='checkout'),
-    url(r'^order-confirmation/<int:order_id>/', views.order_confirmation, name='order_confirmation'),
+    url(r'^order_confirmation/<int:order_id>/', views.order_confirmation, name='order_confirmation'),
 ]
