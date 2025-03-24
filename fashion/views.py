@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required  
-from .models import Product, Cart, CartItem
+from .models import Product, Cart, CartItem, Order, OrderItem
 from .forms import RegistrationForm
 # Create your views here.
 
@@ -92,3 +92,38 @@ def add_to_cart(request, product_id):
 
 def profile(request):
     return render(request, 'fashion/profile.html', {'user': request.user})
+
+@login_required
+def checkout(request):
+    cart = get_user_cart(request)  # Assuming you have this helper function
+    if not cart or not cart.items.exists():
+        return redirect('cart')  # Redirect to cart if empty
+
+    total = sum(float(item.product.price) * item.quantity for item in cart.items.all())
+
+    if request.method == 'POST':
+        # Process the checkout (e.g., save order, clear cart)
+        # For simplicity, we'll assume the user submits a form with shipping details
+        shipping_address = request.POST.get('shipping_address')
+
+        # Create an order
+        order = Order.objects.create(
+            user=request.user,
+            shipping_address=shipping_address,
+            total=total
+        )
+
+        # Move cart items to order items
+        for item in cart.items.all():
+            OrderItem.objects.create(
+                order=order,
+                product=item.product,
+                quantity=item.quantity,
+                price=item.product.price
+            )
+
+        # Clear the cart
+        cart.items.all().delete()
+        return redirect('order_confirmation', order_id=order.id)
+
+    return render(request, 'fashion/checkout.html', {'cart': cart, 'total': total})
