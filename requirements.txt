@@ -1,0 +1,5 @@
+certifi @ file:///C:/b/abs_85o_6fm0se/croot/certifi_1671487778835/work/certifi
+Django==2.1.5
+Pillow==9.4.0
+pytz @ file:///C:/b/abs_22fofvpn1x/croot/pytz_1671698059864/work
+wincertstore==0.2
