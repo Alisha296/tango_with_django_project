@@ -52,3 +52,8 @@ footer a:hover {
     background-color: #e65b50;
     border-color: #e65b50;
 }
+
+.logo {
+    height: 200px; 
+    width: auto; 
+}
