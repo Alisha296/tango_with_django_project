@@ -131,3 +131,11 @@ def checkout(request):
 def order_confirmation(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
     return render(request, 'fashion/order_confirmation.html', {'order': order})
+
+def checkout(request):
+    cart = get_user_cart(request)  # Assuming this function exists
+    total = 0
+    if cart:
+        for item in cart.items.all():
+            total += float(item.product.price) * item.quantity
+    return render(request, 'fashion/checkout.html', {'cart': cart, 'total': total})
