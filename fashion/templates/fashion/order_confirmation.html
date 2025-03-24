@@ -1,0 +1,17 @@
+<!-- fashion/templates/fashion/order_confirmation.html -->
+{% extends 'fashion/base.html' %}
+
+{% block content %}
+  <h2>Order Confirmation</h2>
+  <p>Thank you for your order, {{ order.user.username }}!</p>
+  <p>Order ID: {{ order.id }}</p>
+  <p>Shipping Address: {{ order.shipping_address }}</p>
+  <p>Total: ${{ order.total }}</p>
+  <h3>Items:</h3>
+  <ul>
+    {% for item in order.items.all %}
+      <li>{{ item.product.name }} - {{ item.quantity }} x ${{ item.price }}</li>
+    {% endfor %}
+  </ul>
+  <p><a href="{% url 'home' %}">Back to Home</a></p>
+{% endblock %}
