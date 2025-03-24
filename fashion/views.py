@@ -43,10 +43,10 @@ def register(request):
     return render(request, 'registration/register.html', {'form': form})
 
     def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
+        if request.method == 'POST':
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect('home')  # Redirect to home after login
