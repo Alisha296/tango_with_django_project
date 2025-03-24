@@ -132,6 +132,7 @@ def order_confirmation(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
     return render(request, 'fashion/order_confirmation.html', {'order': order})
 
+@login_required
 def checkout(request):
     cart = get_user_cart(request)
     total = 0
@@ -140,9 +141,7 @@ def checkout(request):
             total += float(item.product.price) * item.quantity
 
     if request.method == 'POST':
-        # Create an order
         order = Order.objects.create(user=request.user, total=total, status='Pending')
-        # Copy cart items to order items
         for item in cart.items.all():
             OrderItem.objects.create(
                 order=order,
@@ -150,9 +149,7 @@ def checkout(request):
                 quantity=item.quantity,
                 price=item.product.price
             )
-        # Clear the cart
         cart.items.all().delete()
-        # Redirect to a confirmation page
-        return redirect('order_confirmation', order_id=order.id)
+        return redirect('order-confirmation', order_id=order.id)  
 
     return render(request, 'fashion/checkout.html', {'cart': cart, 'total': total})
