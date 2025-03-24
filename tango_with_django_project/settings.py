@@ -134,3 +134,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_URL = '/login/'  # Redirect unauthenticated users to this URL
 LOGIN_REDIRECT_URL = '/'  # Redirect after login (to home)
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout (to home)
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your-email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your-app-password'  # Use an App Password if using Gmail
+DEFAULT_FROM_EMAIL = 'your-email@gmail.com'

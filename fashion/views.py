@@ -50,6 +50,8 @@ def register(request):
             user = form.save()
             login(request, user)  # Log the user in after registration
             return redirect('home')
+        else:
+            print("Form errors:", form.errors)
     else:
         form = RegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
