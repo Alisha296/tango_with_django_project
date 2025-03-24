@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^search/$', views.search, name='search'),
     url(r'^register/$', views.register, name='register'),
     url(r'^login/$', views.login_view, name='login'),
+    url(r'^add-to-cart/(?P<product_id>\d+)/$', views.add_to_cart, name='add_to_cart'),
 ]

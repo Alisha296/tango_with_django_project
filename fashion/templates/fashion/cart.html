@@ -1,13 +1,13 @@
 <!-- fashion/templates/fashion/cart.html -->
 {% extends 'fashion/base.html' %}
-{% load static %}
-
+{% load cart_filters %}  <!-- Add this -->
 {% block title %}The Fashion Atelier - Cart{% endblock %}
 
 {% block content %}
 <section class="py-5">
     <div class="container">
-        <h1>Your Cart</h1>
+        <h1 class="text-center">Your Cart</h1>
+        {% if cart %}
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -15,17 +15,30 @@
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
-                    <th>Action</th>
                 </tr>
             </thead>
-            <tbody id="cart-items">
-                <!-- Cart items will be added dynamically via JavaScript -->
+            <tbody>
+                {% for item in cart.items.all %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>£{{ item.product.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>£{{ item.product.price|floatformat:2|multiply:item.quantity }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">Your cart is empty.</td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
-        <div class="text-end">
-            <h3>Total: <span id="cart-total">£0.00</span></h3>
-            <button class="btn btn-primary">Checkout</button>
+        <div class="text-right">
+            <h3>Total: £{% with total=0 %}{% for item in cart.items.all %}{% with subtotal=item.product.price|floatformat:2|multiply:item.quantity %}{{ total|add:subtotal }}{% endwith %}{% endwith %}</h3>
+            <a href="#" class="btn btn-primary">Proceed to Checkout</a>
         </div>
+        {% else %}
+        <p class="text-center">Your cart is empty.</p>
+        {% endif %}
     </div>
 </section>
 {% endblock %}
