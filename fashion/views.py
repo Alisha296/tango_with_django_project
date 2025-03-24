@@ -52,17 +52,25 @@ def profile(request):
     return render(request, 'fashion/profile.html', {'user': request.user})
 
 def login_view(request):
+    print(f"Request method: {request.method}")  # Debug: Check the request method
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        print("POST data:", request.POST)  # Debug: Check the form data
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(f"Attempting to authenticate: username={username}, password={password}")  # Debug
         user = authenticate(request, username=username, password=password)
+        print(f"User authenticated: {user}")  # Debug
         if user is not None:
             login(request, user)
+            print("Login successful, redirecting to home")  # Debug
             return redirect('home')
         else:
+            print("Authentication failed")  # Debug
             return render(request, 'registration/login.html', {'error': 'Invalid username or password'})
+    else:
+        print("Rendering login page (GET request)")  # Debug
     return render(request, 'registration/login.html')
-
+    
 @login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
