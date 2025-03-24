@@ -58,41 +58,6 @@ function removeFromCart(productId) {
     displayCart();
 }
 
-// Search functionality (mock)
-document.addEventListener('DOMContentLoaded', function() {
-    const searchForm = document.getElementById('search-form');
-    if (searchForm) {
-        searchForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const query = document.getElementById('q').value.toLowerCase();
-            const results = [
-                { id: 1, name: "Men's Casual Shirt", price: 35.00 },
-                { id: 2, name: "Women's Floral Dress", price: 50.00 },
-                { id: 3, name: "Kids' Denim Jacket", price: 25.00 }
-            ].filter(item => item.name.toLowerCase().includes(query));
-
-            const searchResults = document.getElementById('search-results');
-            if (searchResults) {
-                searchResults.innerHTML = '';
-                results.forEach(item => {
-                    searchResults.innerHTML += `
-                        <div class="col-md-4 mb-4">
-                            <div class="card product-card">
-                                <img src="{% static 'img/product1.jpg' %}" class="card-img-top" alt="${item.name}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${item.name}</h5>
-                                    <p class="card-text">£${item.price.toFixed(2)}</p>
-                                    <a href="{% url 'product' product_id=${item.id} %}" class="btn btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-        });
-    }
-});
-
 // Initialize cart on page load
 document.addEventListener('DOMContentLoaded', function() {
     updateCartCount();
