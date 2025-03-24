@@ -68,6 +68,10 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
 
@@ -126,4 +130,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_URL = '/accounts/login/'
+# Authentication settings
+LOGIN_URL = '/login/'  # Redirect unauthenticated users to this URL
+LOGIN_REDIRECT_URL = '/'  # Redirect after login (to home)
+LOGOUT_REDIRECT_URL = '/'  # Redirect after logout (to home)
