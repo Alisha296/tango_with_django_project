@@ -28,7 +28,14 @@ def product(request, product_id):
 
 @login_required
 def cart(request):
-    return render(request, 'fashion/cart.html')
+    print(f"User authenticated: {request.user.is_authenticated}")
+    print(f"User: {request.user}")
+    cart = get_user_cart(request)
+    total = 0
+    if cart:
+        for item in cart.items.all():
+            total += float(item.product.price) * item.quantity
+    return render(request, 'fashion/cart.html', {'cart': cart, 'total': total})
 
 def contact(request):
     return render(request, 'fashion/contact.html')
@@ -69,7 +76,7 @@ def login_view(request):
     else:
         print("Rendering login page (GET request)")
     return render(request, 'registration/login.html')
-    
+
 @login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
