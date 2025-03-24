@@ -1,0 +1,23 @@
+<!-- fashion/templates/fashion/checkout.html -->
+{% extends 'fashion/base.html' %}
+
+{% block content %}
+  <h2>Checkout</h2>
+  <h3>Your Cart</h3>
+  <ul>
+    {% for item in cart.items.all %}
+      <li>{{ item.product.name }} - {{ item.quantity }} x ${{ item.product.price }}</li>
+    {% endfor %}
+  </ul>
+  <p><strong>Total: ${{ total }}</strong></p>
+
+  <form method="post">
+    {% csrf_token %}
+    <p>
+      <label for="shipping_address">Shipping Address:</label>
+      <textarea name="shipping_address" id="shipping_address" required></textarea>
+    </p>
+    <button type="submit">Place Order</button>
+  </form>
+  <p><a href="{% url 'cart' %}">Back to Cart</a></p>
+{% endblock %}

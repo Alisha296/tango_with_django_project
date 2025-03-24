@@ -127,3 +127,7 @@ def checkout(request):
         return redirect('order_confirmation', order_id=order.id)
 
     return render(request, 'fashion/checkout.html', {'cart': cart, 'total': total})
+
+def order_confirmation(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    return render(request, 'fashion/order_confirmation.html', {'order': order})
