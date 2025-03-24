@@ -1,0 +1,54 @@
+/* static/css/style.css */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    max-height: 40px;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #333 !important;
+}
+
+.nav-link:hover {
+    color: #ff6f61 !important;
+}
+
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+}
+
+.product-card {
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+footer a:hover {
+    color: #ff6f61 !important;
+}
+
+.btn-primary {
+    background-color: #ff6f61;
+    border-color: #ff6f61;
+}
+
+.btn-primary:hover {
+    background-color: #e65b50;
+    border-color: #e65b50;
+}

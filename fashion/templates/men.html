@@ -1,0 +1,44 @@
+<!-- fashion/templates/fashion/men.html -->
+{% extends 'fashion/base.html' %}
+{% load static %}
+
+{% block title %}The Fashion Atelier - Men{% endblock %}
+
+{% block content %}
+<!-- Category Header -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h1 class="text-center">Men's Fashion</h1>
+        <p class="text-center">Explore our latest collection for men.</p>
+    </div>
+</section>
+
+<!-- Products -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="{% static 'img/men1.jpg' %}" class="card-img-top" alt="Men's Shirt">
+                    <div class="card-body">
+                        <h5 class="card-title">Men's Casual Shirt</h5>
+                        <p class="card-text">£35.00</p>
+                        <a href="{% url 'product' 1 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="{% static 'img/men2.jpg' %}" class="card-img-top" alt="Men's Jacket">
+                    <div class="card-body">
+                        <h5 class="card-title">Men's Denim Jacket</h5>
+                        <p class="card-text">£55.00</p>
+                        <a href="{% url 'product' 4 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more products as needed -->
+        </div>
+    </div>
+</section>
+{% endblock %}

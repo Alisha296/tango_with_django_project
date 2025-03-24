@@ -1,0 +1,112 @@
+<!-- fashion/templates/fashion/home.html -->
+{% extends 'fashion/base.html' %}
+{% load static %}
+
+{% block title %}The Fashion Atelier - Home{% endblock %}
+
+{% block content %}
+<!-- Carousel Banner -->
+<div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'img/banner1.jpg' %}" class="d-block w-100" alt="Banner 1">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="display-4">New Arrivals 2025</h1>
+                <p>Discover the latest trends in fashion.</p>
+                <a href="{% url 'men' %}" class="btn btn-primary btn-lg">Shop Now</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'img/banner2.jpg' %}" class="d-block w-100" alt="Banner 2">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="display-4">Spring Collection</h1>
+                <p>Refresh your wardrobe with vibrant styles.</p>
+                <a href="{% url 'women' %}" class="btn btn-primary btn-lg">Explore</a>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- Featured Products -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Featured Products</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="{% static 'img/men1.jpg' %}" class="card-img-top" alt="Men's Shirt">
+                    <div class="card-body">
+                        <h5 class="card-title">Men's Casual Shirt</h5>
+                        <p class="card-text">£35.00</p>
+                        <a href="{% url 'product' 1 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="{% static 'img/women1.jpg' %}" class="card-img-top" alt="Women's Dress">
+                    <div class="card-body">
+                        <h5 class="card-title">Women's Floral Dress</h5>
+                        <p class="card-text">£50.00</p>
+                        <a href="{% url 'product' 2 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="{% static 'img/kids1.jpg' %}" class="card-img-top" alt="Kids' Jacket">
+                    <div class="card-body">
+                        <h5 class="card-title">Kids' Denim Jacket</h5>
+                        <p class="card-text">£25.00</p>
+                        <a href="{% url 'product' 3 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Shop by Category</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{% static 'img/men2.jpg' %}" class="card-img-top" alt="Men">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Men</h5>
+                        <a href="{% url 'men' %}" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{% static 'img/women2.jpg' %}" class="card-img-top" alt="Women">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Women</h5>
+                        <a href="{% url 'women' %}" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{% static 'img/kids2.jpg' %}" class="card-img-top" alt="Kids">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Kids</h5>
+                        <a href="{% url 'kids' %}" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

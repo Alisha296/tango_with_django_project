@@ -1,0 +1,22 @@
+<!-- fashion/templates/fashion/search.html -->
+{% extends 'fashion/base.html' %}
+{% load static %}
+
+{% block title %}The Fashion Atelier - Search{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1>Search Results</h1>
+        <form class="mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search products..." id="search-input">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+        <div class="row" id="search-results">
+            <!-- Search results will be added dynamically via JavaScript -->
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!-- fashion/templates/fashion/cart.html -->
+{% extends 'fashion/base.html' %}
+{% load static %}
+
+{% block title %}The Fashion Atelier - Cart{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1>Your Cart</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Cart items will be added dynamically via JavaScript -->
+            </tbody>
+        </table>
+        <div class="text-end">
+            <h3>Total: <span id="cart-total">£0.00</span></h3>
+            <button class="btn btn-primary">Checkout</button>
+        </div>
+    </div>
+</section>
+{% endblock %}
