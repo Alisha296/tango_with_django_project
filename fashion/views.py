@@ -89,3 +89,6 @@ def add_to_cart(request, product_id):
             cart_item.quantity += 1
             cart_item.save()
     return redirect('cart')
+
+def profile(request):
+    return render(request, 'fashion/profile.html', {'user': request.user})

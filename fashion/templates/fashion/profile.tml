@@ -1,0 +1,9 @@
+<!-- fashion/templates/fashion/profile.html -->
+{% extends 'fashion/base.html' %}
+
+{% block content %}
+  <h2>Profile</h2>
+  <p>Username: {{ user.username }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p><a href="{% url 'home' %}">Back to Home</a></p>
+{% endblock %}
