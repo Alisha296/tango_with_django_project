@@ -1,0 +1,17 @@
+<!-- fashion/templates/registration/register.html -->
+{% extends 'fashion/base.html' %}
+{% block title %}The Fashion Atelier - Register{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center">Register</h1>
+        <form method="post" class="w-50 mx-auto">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        <p class="text-center mt-3">Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>
+    </div>
+</section>
+{% endblock %}
