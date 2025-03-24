@@ -143,3 +143,21 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your-email@gmail.com'
 EMAIL_HOST_PASSWORD = 'your-app-password'  # Use an App Password if using Gmail
 DEFAULT_FROM_EMAIL = 'your-email@gmail.com'
+
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 6,
+    },
+    #{
+     #   'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    #},
+    #{
+     #   'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    #},
+]
